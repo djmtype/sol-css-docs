@@ -1,0 +1,62 @@
+---
+// import "@/styles/elements/_button.css"
+
+type Props = {
+  uuid: string
+  style?: any
+}
+
+const { uuid, ...restProps } = Astro.props as Props
+---
+
+<code-wrapper style={{ ...restProps.style }}>
+  <slot />
+
+  <clipboard-copy for={`${uuid}`}>
+    <span aria-label='Copy to clipboard'>
+      <svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'><g fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' vector-effect='non-scaling-stroke'><rect width='8' height='4' x='8' y='2' rx='1' ry='1'></rect><path d='M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2'></path></g></svg>
+    </span>
+    <span class='notice' hidden>Copied!</span>
+  </clipboard-copy>
+</code-wrapper>
+
+<script>
+  import "@github/clipboard-copy-element"
+</script>
+
+<script is:inline>
+  document.addEventListener("clipboard-copy", function (event) {
+    const notice = event.target.querySelector(".notice")
+    announce.setAttribute("aria-label", "Copied")
+    notice.hidden = false
+    setTimeout(function () {
+      announce.setAttribute("aria-label", "")
+      notice.hidden = true
+    }, 1000)
+  })
+</script>
+
+<style is:global>
+  code-wrapper {
+    position: relative;
+    text-align: left;
+  }
+
+  code-wrapper pre + [role="button"] {
+    --_padding: 0.375em;
+    --_font-size: var(--font-size-xs);
+
+    position: absolute;
+
+    top: calc(var(--spacing-xs) / 2);
+    right: calc(var(--spacing-sm) / 2);
+    svg {
+      width: 1.75em;
+      height: 1.75em;
+    }
+  }
+
+  [role="button"] > span:not([hidden]) {
+    display: inline-flex;
+  }
+</style>

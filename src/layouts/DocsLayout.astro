@@ -1,0 +1,51 @@
+---
+import type { MarkdownHeading } from "astro"
+import type { CollectionEntry } from "astro:content"
+import BaseHead from "@/components/Base/BaseHead.astro"
+import BaseSEO from "@/components/Base/BaseSEO.astro"
+
+import BaseHeader from "@/components/Base/BaseHeader.astro"
+
+import PageContent from "@/components/DocsComponents/PageContent.astro"
+
+
+// import { SITE } from "../config"
+
+type Props = CollectionEntry<"docs">["data"] & {
+  headings: MarkdownHeading[]
+}
+
+const { headings, ...data } = Astro.props
+const canonicalURL = new URL(Astro.url.pathname, Astro.site)
+const currentPage = Astro.url.pathname
+
+
+---
+
+<html lang={data.lang}>
+  <head>
+    <BaseHead />
+
+    <BaseSEO {...data} canonicalUrl={canonicalURL} />
+  </head>
+
+  <body>
+    <BaseHeader currentPage={currentPage} />
+    <main id="main-content">
+      <div aria-live="polite" id="announce"></div>
+      <section class="main-section">
+     
+
+        <PageContent title={data.title} headings={headings}>
+
+          <!-- <span id="fontSizeDisplay"></span> -->
+
+          <slot />
+        </PageContent>
+      </section>
+    </main>
+    
+  </body>
+</html>
+
+

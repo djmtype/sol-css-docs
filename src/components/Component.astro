@@ -1,0 +1,85 @@
+---
+// import "@/styles/elements/_button.css";
+const html = await Astro.slots.render("default")
+import { v4 as uuidv4 } from "uuid"
+import { Code } from "astro/components"
+
+const uuid = uuidv4()
+
+export interface Props {
+  openState?: boolean
+}
+
+const { openState } = Astro.props as Props
+---
+
+<Fragment set:html={html} />
+
+<details open={openState ? "" : undefined}>
+  <summary>HTML</summary>
+  <Code
+    id={`component-${uuid}`}
+    code={html}
+    lang='html'
+    theme='css-variables'
+    wrap
+  />
+
+  <clipboard-copy for={`component-${uuid}`}>
+    <span aria-label='Copy to clipboard'>
+      <svg
+        xmlns='http://www.w3.org/2000/svg'
+        width='32'
+        height='32'
+        viewBox='0 0 24 24'
+        ><g
+          fill='none'
+          stroke='currentColor'
+          stroke-linecap='round'
+          stroke-linejoin='round'
+          stroke-width='2'
+          vector-effect='non-scaling-stroke'
+          ><rect width='8' height='4' x='8' y='2' rx='1' ry='1'></rect><path
+            d='M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2'
+          ></path></g
+        ></svg
+      >
+    </span>
+    <span class='notice' hidden>Copied!</span>
+  </clipboard-copy>
+</details>
+
+<script>
+  import "@github/clipboard-copy-element"
+</script>
+
+<script is:inline>
+  document.addEventListener("clipboard-copy", function (event) {
+    const notice = event.target.querySelector(".notice")
+    announce.setAttribute("aria-label", "Copied")
+    notice.hidden = false
+    setTimeout(function () {
+      announce.setAttribute("aria-label", "")
+      notice.hidden = true
+    }, 1000)
+  })
+</script>
+
+<style>
+  pre + [role="button"] {
+    --_padding: 0.375em;
+    --_font-size: var(--font-size-xs);
+
+    position: absolute;
+
+    top: var(--spacing-xl);
+    right: calc(var(--spacing-sm) / 2);
+    svg {
+      width: 1.75em;
+      height: 1.75em;
+    }
+  }
+  [role="button"] > span:not([hidden]) {
+    display: inline-flex;
+  }
+</style>
