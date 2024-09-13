@@ -1,23 +1,23 @@
 ---
-// import BaseNav from './BaseNav.astro';
-
-// import { SITE } from '../../config';
+import BaseNav from "@/components/Base/BaseNav.astro"
+// import { 
+//   getLanguageFromURL, 
+//   KNOWN_LANGUAGE_CODES 
+// } from "@/languages"
 
 // import SkipToContent from './SkipToContent.astro';
-// import SidebarToggle from './SidebarToggle';
-// import LanguageSelect from './LanguageSelect';
-
 
 type Props = {
-	currentPage?: string;
-};
+  currentPage: string
+}
 
-const { currentPage } = Astro.props;
-
+const { currentPage } = Astro.props
+// const lang = getLanguageFromURL(currentPage)
 ---
 
 <header>
-	<p><strong>SOL</strong> CSS</p>
-
-<!-- <BaseNav currentPage={currentPage} /> -->
+  <div>
+    <p style="font-size: var(--font-size-md)"><strong>SOL</strong> CSS</p>
+    <BaseNav currentPage={currentPage} />
+  </div>
 </header>

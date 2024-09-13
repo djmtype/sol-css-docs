@@ -1,13 +1,19 @@
-@layer theme, utilities;
+@layer theme, library, layout, utilities;
 
-/* @import "tailwindcss/theme" layer(theme);
+@import "tailwindcss/theme" layer(theme);
 @import "./tailwind.css" layer(theme);
-@import "tailwindcss/utilities" layer(utilities); */
+@import "tailwindcss/utilities" layer(utilities);
 
-@import '../../../src/sol.css' layer(theme);
+
+
+@import '../../node_modules/sol-css/src/sol.css' layer(library);
 
 /* @import '../../../src/components/button.css';
 
 @import '../../../src/components/details.css'; */
+
+@import './layout/global.css' layer(layout);
+
+/* @import './utilities/flow.css' layer(utilities); */
 
 @import './settings.css';

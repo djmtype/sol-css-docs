@@ -1,4 +1,5 @@
 ---
+import "@/styles/main.css"
 import type { MarkdownHeading } from "astro"
 import type { CollectionEntry } from "astro:content"
 import BaseHead from "@/components/Base/BaseHead.astro"
@@ -6,10 +7,12 @@ import BaseSEO from "@/components/Base/BaseSEO.astro"
 
 import BaseHeader from "@/components/Base/BaseHeader.astro"
 
-import PageContent from "@/components/DocsComponents/PageContent.astro"
+import { slugify } from "@/utils/global"
 
+// import PageContent from "@/components/DocsComponents/PageContent.astro"
 
-// import { SITE } from "../config"
+import LeftSidebar from "@/components/DocsComponents/LeftSidebar.astro"
+import SkipLink from "@/components/Base/SkipLink.astro"
 
 type Props = CollectionEntry<"docs">["data"] & {
   headings: MarkdownHeading[]
@@ -18,34 +21,35 @@ type Props = CollectionEntry<"docs">["data"] & {
 const { headings, ...data } = Astro.props
 const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 const currentPage = Astro.url.pathname
+// const currentFile = `src/content/docs${currentPage.replace(/\/$/, "")}.mdx`
 
 
 ---
 
-<html lang={data.lang}>
+<html dir={data.dir} lang={data.lang}>
   <head>
     <BaseHead />
-
     <BaseSEO {...data} canonicalUrl={canonicalURL} />
   </head>
 
   <body>
+    <SkipLink />
     <BaseHeader currentPage={currentPage} />
-    <main id="main-content">
-      <div aria-live="polite" id="announce"></div>
-      <section class="main-section">
+    <main id='main-content'>
+      
      
+        <aside id='main-aside'>
+          <LeftSidebar currentPage={currentPage} />
+        </aside>
 
-        <PageContent title={data.title} headings={headings}>
-
-          <!-- <span id="fontSizeDisplay"></span> -->
-
+        <article class="main-article">
+          <div aria-live='polite' id='announce'></div>
+          <h1 id={slugify(data.title)}>{data.title}</h1>
           <slot />
-        </PageContent>
-      </section>
-    </main>
+        </article>
+
+
     
+    </main>
   </body>
 </html>
-
-

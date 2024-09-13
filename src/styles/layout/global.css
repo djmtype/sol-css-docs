@@ -1,0 +1,91 @@
+body > header {
+  background-color: var(--color-surface-bright);
+}
+
+body > header > div {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: var(--spacing-xs);
+  margin-inline: auto;
+  inline-size: min(
+    var(--breakpoint-lg),
+    calc(100% - (var(--spacing-gutter) * 2))
+  );
+}
+
+header nav > ul {
+  display: flex;
+}
+
+header nav > ul a {
+  padding: var(--spacing-input-block) var(--spacing-input-inline);
+  display: flex;
+}
+
+/* main {
+
+  margin-inline: auto;
+  inline-size: min(
+    var(--breakpoint-lg),
+    calc(100% - (var(--spacing-gutter) * 2))
+  );
+} */
+
+main > section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-gutter);
+  /* padding-block: var(--spacing-3xl); */
+}
+
+main > section > * {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 30ch;
+}
+
+main > section > aside {
+  flex-basis: 30ch;
+  flex-grow: 1;
+  align-self: start;
+  position: sticky;
+  top: 0;
+  background: black;
+}
+
+main > section > aside h2 {
+  font-size: var(--font-size-sm);
+  font-weight: normal;
+}
+
+main > section > aside nav a {
+  display: flex;
+  padding: 0 1em;
+}
+
+main > section > aside nav > ul {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+main > section > article {
+  flex-basis: 0;
+  flex-grow: 999;
+  margin-inline: auto;
+  min-inline-size: 60%;
+  max-inline-size: var(--breakpoint-md);
+}
+
+main > section > article > * + * {
+  margin-block-start: var(--spacing-flow);
+}
+
+[aria-current="page"] {
+  font-weight: bold;
+  text-decoration: none;
+  color: var(--color-ink);
+  cursor: default;
+}

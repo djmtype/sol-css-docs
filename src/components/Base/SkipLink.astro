@@ -1,0 +1,36 @@
+<a role="button" href="#main-content">Skip to content</a>
+<a role="button" href="#main-nav">Skip to main nav</a>
+<a role="button" href="#docs-nav">Skip to documentation nav</a>
+
+<style>
+  body > a[role="button"]  {
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  position: absolute;
+  overflow: hidden;
+  left: 50%;
+  top: var(--spacing-3xs);
+  transform: translateX(-50%);
+}
+
+body > a[role="button"]:focus-visible {
+  width: auto;
+  height: auto;
+  padding: var(--spacing-button-block) var(--spacing-button-inline);
+  margin: initial;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  z-index: 5;
+
+}
+
+
+
+
+</style>

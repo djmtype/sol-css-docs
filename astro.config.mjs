@@ -1,20 +1,30 @@
 import { defineConfig } from 'astro/config';
-import { SITE_META } from "./config";
+import { SITE } from "./src/config";
 import AutoImport from "astro-auto-import";
 import { Features } from "lightningcss"
 import mdx from '@astrojs/mdx';
-// import tailwindcss from '@tailwindcss/vite'
+import tailwindcss from '@tailwindcss/vite'
 
 // https://astro.build/config
 export default defineConfig({
-  site: SITE_META.url,
+  site: SITE.url,
   compressHTML: false,
   integrations: [
-    mdx(),
+    
     AutoImport({
       imports: [
+        "./src/components/Component.astro",
+        "./src/components/Details.astro",
         "./src/components/Buttons.astro",
       ],
+    }),
+    mdx({
+      shikiConfig: {
+        // Choose from Shiki's built-in themes (or add your own)
+        // https://github.com/shikijs/shiki/blob/main/docs/themes.md
+        theme: "css-variables",
+        wrap: true,
+      },
     }),
   ],
 
@@ -45,12 +55,12 @@ export default defineConfig({
       wrap: true,
       // Add custom transformers: https://shiki.style/guide/transformers
       // Find common transformers: https://shiki.style/packages/transformers
-      transformers: [],
+      // transformers: [],
     },
   },
 
   vite: {
-    // plugins: [tailwindcss()],
+    plugins: [tailwindcss()],
     css: {
       devSourcemap: true,
       transformer: "lightningcss",

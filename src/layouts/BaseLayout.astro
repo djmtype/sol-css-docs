@@ -6,23 +6,31 @@ import BaseSEO from "@/components/Base/BaseSEO.astro"
 import BaseHeader from "@/components/Base/BaseHeader.astro"
 
 
-
 type Props = {
-  title: string
+  title: string;
+  description: string; 
 }
 const currentPage = Astro.url.pathname
-// const { pathname } = Astro.url
-const { title, ...data } = Astro.props as Props
+const { title, description } = Astro.props as Props
 const canonicalURL = new URL(Astro.url.pathname, Astro.site)
-// const { ...data } = Astro.props
-// const canonicalURL = new URL(Astro.url.pathname, Astro.site)
-// const currentPage = Astro.url.pathname
+
+const lang = 'en-us'
+const dir = 'ltr'
+
 ---
 
-<html lang="en-us">
+<html dir={dir} lang={lang}>
   <head>
     <BaseHead />
-    <BaseSEO {title} canonicalUrl={canonicalURL} />
+    <BaseSEO 
+    title={title} 
+    canonicalUrl={canonicalURL}
+    title={title} 
+      canonicalUrl={canonicalURL} 
+      description={description} 
+      lang={lang} 
+      dir={dir} 
+     />
   </head>
 
   <body>
@@ -35,24 +43,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site)
   </body>
 </html>
 
-<style is:global>
-  
-  main {
-    container: layout / inline-size;
-    inline-size: min(60rem, calc(100% - var(--spacing-md) * 2));
-    margin-inline: auto;
-    padding-block: 2rlh;
-  }
-
-  main > * + *:not(dialog):not([popover]) {
-    margin-block-start: 1.5em;
-  }
-
-  main :where(p, li, h2, h3, h4) {
-    max-inline-size: 72ch;
-  }
-  
-</style>
 
 <!-- <script is:inline>  
   const theme = (() => {    

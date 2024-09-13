@@ -1,0 +1,6 @@
+.wrapper {
+  --_column-size: 64rem;
+  --_gutter-size: var(--spacing-md);
+  margin-inline: auto;
+  inline-size: min(var(--_column-size), calc(100% - (var(--_gutter-size) * 2)));
+}

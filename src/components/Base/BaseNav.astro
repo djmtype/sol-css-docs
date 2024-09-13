@@ -1,0 +1,34 @@
+---
+import { getLanguageFromURL } from "@/languages"
+import { MAINNAV } from "@/config"
+
+type Props = {
+  currentPage: string
+}
+
+const { currentPage } = Astro.props
+const currentPageMatch = currentPage.endsWith("/") ? currentPage.slice(1, -1) : currentPage.slice(1)
+const langCode = getLanguageFromURL(currentPage)
+const mainnav = MAINNAV[langCode]
+---
+
+<nav aria-labelledby='primary-navigation' id="main-nav">
+  {
+    Object.entries(mainnav).map(([header, children]) => (
+    <h2 class="sr-only">{header}</h2>
+      <ul role='list'>
+        {children.map((child) => {
+          const url = Astro.site?.pathname + child.link
+          return (
+            <li>
+              <a href={url} aria-current={currentPageMatch === child.link ? "page" : false}>
+                {child.text}
+              </a>
+            </li>
+          )
+        })}
+      </ul>
+    ))
+  }
+</nav>
+

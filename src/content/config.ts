@@ -1,8 +1,6 @@
 import { z, defineCollection } from 'astro:content';
 
-
-
-import { SITE } from '../config';
+import { SITE } from '@/config';
 
 const docs = defineCollection({
 	schema: z.object({

@@ -1,14 +1,29 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 
-// import { Code } from "astro/components"
-// const html = await Astro.slots.render("default")
-// import Clipboard from "@/components/Clipboard.astro"
+
+
 const title = "Welcome"
+const description = "A classless CSS library"
 
 ---
 
-<BaseLayout title={title}>
+<BaseLayout title={title} description={description}>
+  <section>
+    <article>
+      <header>
+        <hgroup>
+          <h1>
+            SOL
+          </h1>
 
+          <p><em>CSS without the FUSS</em></p>
+        </hgroup>
+      </header>
+      <p><a href='#0' role='button'>Get Started</a> <a href='#0'>Download</a></p>
+
+   
+    </article>
+  </section>
 
 </BaseLayout>
