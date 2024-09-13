@@ -1,48 +1,43 @@
 ---
 import "@/styles/main.css"
+import type { MarkdownHeading } from "astro"
+import type { CollectionEntry } from "astro:content"
 
-import BaseHead from "@/components/Base/BaseHead.astro"
-import BaseSEO from "@/components/Base/BaseSEO.astro"
-import BaseHeader from "@/components/Base/BaseHeader.astro"
+import BaseHead from "@/components/Base/Head.astro"
+import SkipLink from "@/components/Base/SkipLink.astro"
+import BaseHeader from "@/components/Base/Header.astro"
 
-
-type Props = {
-  title: string;
-  description: string; 
+type Props = CollectionEntry<"docs">["data"] & {
+  headings?: MarkdownHeading[]
+  title: string
+  description: string
 }
-const currentPage = Astro.url.pathname
-const { title, description } = Astro.props as Props
-const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 
-const lang = 'en-us'
-const dir = 'ltr'
+const currentPage = Astro.url.pathname
+const { title, description, headings, ...data } = Astro.props as Props
+const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 
 ---
 
-<html dir={dir} lang={lang}>
+<html dir="ltr" lang="en-us">
   <head>
-    <BaseHead />
-    <BaseSEO 
+    <BaseHead 
     title={title} 
-    canonicalUrl={canonicalURL}
-    title={title} 
-      canonicalUrl={canonicalURL} 
-      description={description} 
-      lang={lang} 
-      dir={dir} 
-     />
+    description={description} 
+    canonicalUrl={canonicalURL} 
+    {...data} />
   </head>
 
   <body>
+    <SkipLink />
+    <!-- <button id="themeToggle">Toggle</button> -->
     <BaseHeader currentPage={currentPage} />
-    <button id="themeToggle">Toggle</button>
-    <main id="main-content">
+    <main id='main-content'>
       <div aria-live="polite" id="announce"></div>
-    <slot />
-  </main>
+      <slot />
+    </main>
   </body>
 </html>
-
 
 <!-- <script is:inline>  
   const theme = (() => {    

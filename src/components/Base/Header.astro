@@ -1,0 +1,16 @@
+---
+import MainNav from "@/components/Base/MainNav.astro"
+
+type Props = {
+  currentPage: string
+}
+
+const { currentPage } = Astro.props
+---
+
+<header>
+  <div>
+    <p style="font-size: var(--font-size-md)"><strong>SOL</strong> CSS</p>
+    <MainNav currentPage={currentPage} />
+  </div>
+</header>

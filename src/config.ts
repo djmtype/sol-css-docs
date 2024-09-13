@@ -14,52 +14,40 @@ export const OPEN_GRAPH = {
       "astro logo on a starry expanse of space," +
       " with a purple saturn-like planet floating in the right foreground",
   },
-  twitter: "astrodotbuild",
+  // twitter: "astrodotbuild",
 };
 
-export const KNOWN_LANGUAGES = {
-  English: "en",
-} as const;
-export const KNOWN_LANGUAGE_CODES = Object.values(KNOWN_LANGUAGES);
+
+export type DocsNav = Record<string, { text: string; link: string }[]>
 
 
-
-export type Sidebar = 
-Record<
-  (typeof KNOWN_LANGUAGE_CODES)[number],
-  Record<string, { text: string; link: string }[]>
->;
-export const SIDEBAR: Sidebar = {
-  en: {
-    "Getting Started": [{ text: "Intro", link: "docs/en/intro" }],
-    Elements: [
-      // { text: "Colors", link: "docs/en/colors" },
-      // { text: "Space", link: "docs/en/space" },
-			// { text: "Typography", link: "docs/en/typography" },
-		],
-    Components: [
-      { text: "Buttons", link: "docs/en/buttons" },
-      { text: "Details", link: "docs/en/details" },
-      // { text: "Dialog", link: "docs/en/dialog" },
-      // { text: "Images", link: "docs/en/images" },
-      // { text: "Forms", link: "docs/en/forms" },
-      // { text: "Progress", link: "docs/en/progress" },
-			// { text: "Tables", link: "docs/en/tables" },
-		],
-  },
+export const DOCS_NAV: DocsNav = {
+  "Getting Started": [{ text: "Intro", link: "docs/intro" }],
+  Elements: [
+    // { text: "Colors", link: "docs/colors" },
+    // { text: "Space", link: "docs/space" },
+    // { text: "Typography", link: "docs/typography" },
+  ],
+  Components: [
+    { text: "Buttons", link: "docs/buttons" },
+    { text: "Details", link: "docs/details" },
+    // { text: "Dialog", link: "docs/dialog" },
+    // { text: "Images", link: "docs/images" },
+    // { text: "Forms", link: "docs/forms" },
+    // { text: "Progress", link: "docs/progress" },
+    // { text: "Tables", link: "docs/tables" },
+  ],
 };
 
-export type Mainnav = Record<
-  (typeof KNOWN_LANGUAGE_CODES)[number],
-  Record<string, { text: string; link: string }[]>
->;
-export const MAINNAV: Mainnav = {
-  en: {
+
+
+export type MainNav = Record<string, { text: string; link: string }[]>
+
+export const MAIN_NAV: MainNav = {
     "Main Navigation": [
       { text: "Home", link: "" },
-      { text: "Docs", link: "docs/en/intro" },
+      { text: "Docs", link: "docs/intro" },
       // { text: "Demo", link: "blog" },
     ],
-  },
 };
 

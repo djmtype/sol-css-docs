@@ -1,6 +1,5 @@
 ---
-import { getLanguageFromURL } from "@/languages"
-import { MAINNAV } from "@/config"
+import { MAIN_NAV } from "@/config"
 
 type Props = {
   currentPage: string
@@ -8,13 +7,12 @@ type Props = {
 
 const { currentPage } = Astro.props
 const currentPageMatch = currentPage.endsWith("/") ? currentPage.slice(1, -1) : currentPage.slice(1)
-const langCode = getLanguageFromURL(currentPage)
-const mainnav = MAINNAV[langCode]
+const mainNav = MAIN_NAV
 ---
 
 <nav aria-labelledby='primary-navigation' id="main-nav">
   {
-    Object.entries(mainnav).map(([header, children]) => (
+    Object.entries(mainNav).map(([header, children]) => (
     <h2 class="sr-only">{header}</h2>
       <ul role='list'>
         {children.map((child) => {
