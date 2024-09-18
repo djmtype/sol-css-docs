@@ -1,0 +1,30 @@
+<dialog id='dialog'>
+  <form method='dialog'>
+    <header>
+      <h2>My Modal</h2>
+      <button aria-label='Close' autofocus></button>
+    </header>
+    <div>
+      <p>Amet amet laboris tempor labore nostrud cupidatat ex aliqua non duis. Id deserunt elit reprehenderit. Ea consequat nisi in Lorem.</p>
+      <p>Amet amet laboris tempor labore nostrud cupidatat ex aliqua non duis. Id deserunt elit reprehenderit. Ea consequat nisi in Lorem.</p>
+    </div>
+    <footer>
+      <button>Accept</button>
+      <button>Deny</button>
+    </footer>
+  </form>
+</dialog>
+
+<button>Open Dialog</button>
+
+<script is:inline>
+  const dialog = document.querySelector("dialog")
+  const showButton = document.querySelector("dialog + button")
+  const closeButton = document.querySelector("dialog button")
+  showButton.addEventListener("click", () => {
+    dialog.showModal()
+  })
+  closeButton.addEventListener("click", () => {
+    dialog.close()
+  })
+</script>

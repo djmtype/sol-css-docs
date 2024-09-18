@@ -6,7 +6,7 @@ import Layout from '@/layouts/Layout.astro';
 import DocsNav from "@/components/Base/DocsNav.astro"
 export async function getStaticPaths() {
 	const docs = await getCollection('docs');
-	return docs.map((entry) => ({
+	return docs.map((entry: any) => ({
 		params: {
 			slug: entry.slug,
 		},
@@ -29,8 +29,26 @@ const { Content, headings } = await entry.render();
 		<DocsNav currentPage={currentPage} />
 	</aside>
 	<article class="main-article">
-		<h1 id={slugify(entry.data.title)}>{entry.data.title}</h1>
-	<Content />
+		<div class="prose">
+			<h1 id={slugify(entry.data.title)}>{entry.data.title}</h1>
+				<Content />
+		</div>
 </article>
 	
 </Layout>
+
+<style is:global>
+	.prose {
+		--_flow: 1.5em;
+	}
+	.prose > * + * {
+		margin-block-start: var(--_flow);
+	}
+
+	.prose hr {
+		--_flow: var(--spacing-2xl); 
+		+ * {
+		--_flow: var(--spacing-2xl); 
+		}
+	}
+</style>

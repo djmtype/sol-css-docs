@@ -1,0 +1,91 @@
+---
+title: "Colors"
+description: "Default colors"
+---
+
+## File Reference
+
+```
+sol-css/
+    └── src/
+        └── theme/
+            ├── palettes/
+            │   ├── hues.css
+            │   ├── palette.gray.css
+            │   ├── palette.primary.css
+            │   └── palette.utility.css
+            └── color.css
+```
+
+The color space used by SOL is [okLCH](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/oklch). Why okLCH? It's much easier to predict color contrast compared to using other color spaces like RGB or HSL. 
+
+SOL uses a concept of palettes, ~~brazenly borrowed~~ shamelessly stolen from [Open Props](https://open-props.style/) instead of commonly defined color swatches typically found in libraries like TailwindCSS. Thereby, theming is much simpler with a lot less CSS.
+
+More info:  
+[Open Props v2 Color Guide](https://opv2-beta.netlify.app/color/)  
+[Open Props oklch Palettes Beta](https://nerdy.dev/open-props-oklch-palettes-beta)
+
+
+SOL includes 3 color palettes: 
+
+```css
+/* (Brand/accent color scale) */ --color-primary-{1-16}
+
+/* (Neutral color scale) */ --color-gray-{1-16}
+
+/* (Color constants (Example: success, warning, error) */ --color-utility-{1-16}
+```
+
+## Primary Color Palette
+
+[View Primary Color Palette](#color-palette-primary)
+
+Override the default primary hue with any pre-defined hue properties (or use your own): 
+
+```css
+--primary-hue: var(--hue-*)
+/* 
+--hue-{red | pink | purple | violet | indigo | blue | cyan | teal | green | lime | yellow | orange} 
+*/
+```
+
+[See all hue options](#hue-options)
+
+## Gray Color Palette
+
+[View Gray Color Palette](#color-palette-gray)
+
+By default, the gray palette tone is influenced by the `--primary-hue` by `0.1` of chroma which gives the neutral scheme a subtle hint of primary color. However, any of these settings can be changed.
+
+The default gray palette settings: 
+
+```css
+--gray-hue: var(--primary-hue)
+--gray-hue-rotation: 0
+--gray-chroma: 0.1
+```
+
+## Utility Colors 
+
+Utility colors serve a specific purpose; not meant for branding. For example, a red color might be used to indicate an alert. 
+
+To use a specific utility color, define the `--utility-hue` first. Then specify a number from the `--color-utility-{1-16}` scale.
+
+### CSS Example: 
+
+```css
+mark {
+  --utility-hue: var(--hue-yellow);
+  background: var(--color-utility-4);
+}
+```
+
+### HTML Ouput: 
+
+A <mark>highlighted</mark> word
+
+
+
+---
+
+<ColorPalette />

@@ -1,8 +1,10 @@
 @layer theme, library, layout, utilities;
 
-@import "tailwindcss/theme" layer(theme);
+/* @layer base, settings, theme, content, components; */
+
+/* @import "tailwindcss/theme" layer(theme);
 @import "./tailwind.css" layer(theme);
-@import "tailwindcss/utilities" layer(utilities);
+@import "tailwindcss/utilities" layer(utilities); */
 
 
 
@@ -13,7 +15,10 @@
 @import '../../../src/components/details.css'; */
 
 @import './layout/global.css' layer(layout);
+/* @import './utilities/wrapper.css' layer(utilities); */
 
 /* @import './utilities/flow.css' layer(utilities); */
+
+@import './utilities/accessibility.css' layer(utilities);
 
 @import './settings.css';

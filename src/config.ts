@@ -22,20 +22,23 @@ export type DocsNav = Record<string, { text: string; link: string }[]>
 
 
 export const DOCS_NAV: DocsNav = {
-  "Getting Started": [{ text: "Intro", link: "docs/intro" }],
+  "Getting Started": [
+    { text: "Intro", link: "docs/intro" },
+    { text: "Settings", link: "docs/settings" }
+  ],
   Elements: [
-    // { text: "Colors", link: "docs/colors" },
+    { text: "Colors", link: "docs/colors" },
     // { text: "Space", link: "docs/space" },
     // { text: "Typography", link: "docs/typography" },
   ],
   Components: [
     { text: "Buttons", link: "docs/buttons" },
     { text: "Details", link: "docs/details" },
-    // { text: "Dialog", link: "docs/dialog" },
-    // { text: "Images", link: "docs/images" },
-    // { text: "Forms", link: "docs/forms" },
-    // { text: "Progress", link: "docs/progress" },
-    // { text: "Tables", link: "docs/tables" },
+    { text: "Dialog", link: "docs/dialog" },
+    { text: "Images", link: "docs/images" },
+    { text: "Forms", link: "docs/forms" },
+    { text: "Progress", link: "docs/progress" },
+    { text: "Tables", link: "docs/tables" },
   ],
 };
 

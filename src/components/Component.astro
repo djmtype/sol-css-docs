@@ -53,6 +53,8 @@ const { openState, class: className, ...restProps } = Astro.props as Props
 </script>
 
 <style>
+
+
   pre {
     margin: 0;
   }
@@ -74,8 +76,16 @@ const { openState, class: className, ...restProps } = Astro.props as Props
     display: inline-flex;
   }
 
-  details:has(pre) > div {
+
+</style>
+
+<style is:global>
+    details:has(pre) > div {
     padding: 0;
     position: relative;
+  }
+  
+  * + .panel + details {
+    margin-block-start: var(--spacing-2xl);
   }
 </style>

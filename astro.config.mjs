@@ -16,6 +16,13 @@ export default defineConfig({
         "./src/components/Component.astro",
         "./src/components/Details.astro",
         "./src/components/Buttons.astro",
+        "./src/components/Dialog.astro",
+        "./src/components/Images.astro",
+        "./src/components/Table.astro",
+        "./src/components/TableScroll.astro",
+        "./src/components/Forms.astro",
+        "./src/components/Progress.astro",
+        "./src/components/Docs/ColorPalette.astro",
       ],
     }),
     mdx({

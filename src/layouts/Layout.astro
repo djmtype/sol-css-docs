@@ -32,8 +32,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site)
     <SkipLink />
     <!-- <button id="themeToggle">Toggle</button> -->
     <BaseHeader currentPage={currentPage} />
-    <main id='main-content'>
-      <div aria-live="polite" id="announce"></div>
+    <div aria-live="polite" id="announce"></div>
+    <main id='main-content wrapper'>
+      
       <slot />
     </main>
   </body>

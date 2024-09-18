@@ -1,0 +1,66 @@
+---
+title: "Settings"
+description: "An indepth look at SOL's options"
+---
+
+When it comes to CSS custom properites, SOL declares some sensible semantic names for design consistency. Simply think of them as aliases. (Whether this is helpful or not is yet to be determined.) 
+
+They attempt to address the following:  
+
+- Equalize heights among input fields and buttons.
+- Reduce the recall of spacing sizes. 
+- Alleviate color contrast concerns when it comes to <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> standards. 
+
+Any of these defaults can be changed as desired: 
+
+<details open>
+<summary>CSS</summary>
+<div>
+```css
+/* settings.css */
+
+:root {
+  /* Global Content */
+  --radius-default: var(--radius-round, 0.15em);
+  --font-family-default: var(--font-family-sans, sans-serif);
+  --border-width-default: var(--border-width-hairline, 1px);
+
+  --font-scale: 1.25;
+  --spacing-scale: 1.2;
+
+  --border-width-focus: min(calc(var(--border-width-default) * 2), 6px);
+
+  --border-width-separator: var(--border-width-default);
+
+  --icon-size: 1em;
+
+  /* Inline Text Elements */
+  --spacing-badge-block: 0.15ex;
+  --spacing-badge-inline: 0.15em;
+  --radius-badge: 0.15em;
+
+  /* Inputs (Sans Buttons)  */
+  --spacing-input-block: var(--spacing-3xs);
+  --spacing-input-inline: var(--spacing-xs);
+
+  --radius-input: var(--radius-default);
+  --border-width-input: var(--border-width-default);
+
+  /* Buttons */
+  --spacing-button-block: var(--spacing-3xs);
+  --spacing-button-inline: var(--spacing-lg);
+
+  --radius-button: var(--radius-default);
+  --border-width-button: var(--border-width-default);
+
+  /* Basic Card */
+  --spacing-card: var(--spacing-md);
+  --radius-card: var(--radius-default);
+
+  /* Table */
+  --spacing-table: var(--spacing-sm);
+}
+```
+</div>
+</details>
+

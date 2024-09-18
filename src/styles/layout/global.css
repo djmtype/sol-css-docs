@@ -15,73 +15,76 @@ body > header > div {
   );
 }
 
-header nav > ul {
+body > header nav > ul {
   display: flex;
 }
 
-header nav > ul a {
+body > header nav > ul a {
   padding: var(--spacing-input-block) var(--spacing-input-inline);
   display: flex;
 }
 
-/* main {
+
+
+main:has(> aside) {
+  display: grid;
+
+  gap: var(--spacing-gutter);
+  padding-block: var(--spacing-gutter);
+
 
   margin-inline: auto;
-  inline-size: min(
-    var(--breakpoint-lg),
-    calc(100% - (var(--spacing-gutter) * 2))
-  );
-} */
+  inline-size: min(min(var(--breakpoint-lg), 100%), calc(100% - (var(--spacing-gutter) * 2)));
+/* margin-inline: auto;
+max-width: var(--breakpoint-lg);
+padding-inline: var(--spacing-gutter); */
 
-main > section {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--spacing-gutter);
-  /* padding-block: var(--spacing-3xl); */
+  @media (width > 60rem) {
+    padding-block: var(--spacing-2xl);
+    
+    grid-template-columns: minmax(min(100%, 20ch), .5fr) minmax(min(50vw, 30ch), 1.25fr);
+    
+  }
 }
 
-main > section > * {
+main:has(figure) > * {
+  /* grid-column: 1;
+  max-width: 100%; */
+  overflow-x: hidden
+}
+
+/* main:has(aside) > * {
   flex-grow: 1;
   flex-shrink: 1;
   flex-basis: 30ch;
+} */
+
+main > aside {
+  @media(width > 60rem) {
+    align-self: start;
+    position: sticky;
+    top: var(--spacing-gutter);
+    z-index: 1;
+  }
 }
 
-main > section > aside {
-  flex-basis: 30ch;
-  flex-grow: 1;
-  align-self: start;
-  position: sticky;
-  top: 0;
-  background: black;
-}
-
-main > section > aside h2 {
+main > aside h2 {
   font-size: var(--font-size-sm);
   font-weight: normal;
 }
 
-main > section > aside nav a {
+main > aside nav a {
   display: flex;
-  padding: 0 1em;
+  padding: 0;
+  padding-inline-start: 1em;
 }
 
-main > section > aside nav > ul {
+main > aside nav > ul {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-xs);
 }
 
-main > section > article {
-  flex-basis: 0;
-  flex-grow: 999;
-  margin-inline: auto;
-  min-inline-size: 60%;
-  max-inline-size: var(--breakpoint-md);
-}
-
-main > section > article > * + * {
-  margin-block-start: var(--spacing-flow);
-}
 
 [aria-current="page"] {
   font-weight: bold;
