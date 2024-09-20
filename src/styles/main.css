@@ -15,6 +15,7 @@
 @import '../../../src/components/details.css'; */
 
 @import './layout/global.css' layer(layout);
+@import './layout/code.css' layer(layout);
 /* @import './utilities/wrapper.css' layer(utilities); */
 
 /* @import './utilities/flow.css' layer(utilities); */

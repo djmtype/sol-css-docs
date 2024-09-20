@@ -3,7 +3,7 @@ import { SITE } from "./src/config";
 import AutoImport from "astro-auto-import";
 import { Features } from "lightningcss"
 import mdx from '@astrojs/mdx';
-import tailwindcss from '@tailwindcss/vite'
+// import tailwindcss from '@tailwindcss/vite'
 
 // https://astro.build/config
 export default defineConfig({
@@ -21,6 +21,7 @@ export default defineConfig({
         "./src/components/Table.astro",
         "./src/components/TableScroll.astro",
         "./src/components/Forms.astro",
+        "./src/components/FormsInput.astro",
         "./src/components/Progress.astro",
         "./src/components/Docs/ColorPalette.astro",
       ],
@@ -67,7 +68,7 @@ export default defineConfig({
   },
 
   vite: {
-    plugins: [tailwindcss()],
+    // plugins: [tailwindcss()],
     css: {
       devSourcemap: true,
       transformer: "lightningcss",
@@ -77,14 +78,14 @@ export default defineConfig({
         // ),
         include: Features.Nesting,
         // exclude: Features.LabColors | Features.P3Colors,
-        exclude: Features.OklabColors | Features.ColorFunction
+        exclude: Features.OklabColors | Features.ColorFunction,
         // minify: false,
         // sourceMap: true,
       },
     },
     build: {
       cssMinify: "lightningcss",
-      //  cssMinify: true,
+      // cssMinify: false,
     },
   }
 });

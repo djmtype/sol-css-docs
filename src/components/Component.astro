@@ -8,22 +8,31 @@ const uuid = uuidv4()
 
 type Props = {
   style?: any
+  theme?: any
   class?: string
   openState?: boolean
+  summary?: string
+  file?: any
+  path?: string
+  lang?: any
+  rawFile?: any
 }
 
-const { openState, class: className, ...restProps } = Astro.props as Props
+const { file, lang = 'html', theme = 'css-variables', summary = 'HTML', path, rawFile, openState, class: className, ...restProps } = Astro.props as Props
+
+// const { openState, class: className, ...restProps } = Astro.props as Props
 ---
 
 <div class={className} style={{ ...restProps.style }} {...restProps} set:html={html} />
 
 <details open={openState ? "" : undefined}>
-  <summary>HTML</summary>
+  <summary>{summary}</summary>
   <div>
+    {path && <code class="path">{path}</code>}
     <Code
       id={`component-${uuid}`}
-      code={html}
-      lang='html'
+      code={file || html}
+      lang={lang}
       theme='css-variables'
       wrap
     />
@@ -63,7 +72,7 @@ const { openState, class: className, ...restProps } = Astro.props as Props
     margin: 0;
     top: var(--spacing-4xs);
     right: var(--spacing-4xs);
-    font-size: var(--font-size-xs);
+    font-size: var(--font-size-00);
     padding: var(--spacing-button-block);
     gap: .5em;
   }
@@ -84,7 +93,7 @@ const { openState, class: className, ...restProps } = Astro.props as Props
     padding: 0;
     position: relative;
   }
-  
+
   * + .panel + details {
     margin-block-start: var(--spacing-2xl);
   }

@@ -28,36 +28,22 @@ body > header nav > ul a {
 
 main:has(> aside) {
   display: grid;
-
+grid-template-columns: minmax(0, 1fr);
   gap: var(--spacing-gutter);
   padding-block: var(--spacing-gutter);
 
-
   margin-inline: auto;
   inline-size: min(min(var(--breakpoint-lg), 100%), calc(100% - (var(--spacing-gutter) * 2)));
-/* margin-inline: auto;
-max-width: var(--breakpoint-lg);
-padding-inline: var(--spacing-gutter); */
 
   @media (width > 60rem) {
     padding-block: var(--spacing-2xl);
-    
     grid-template-columns: minmax(min(100%, 20ch), .5fr) minmax(min(50vw, 30ch), 1.25fr);
     
   }
 }
 
-main:has(figure) > * {
-  /* grid-column: 1;
-  max-width: 100%; */
-  overflow-x: hidden
-}
 
-/* main:has(aside) > * {
-  flex-grow: 1;
-  flex-shrink: 1;
-  flex-basis: 30ch;
-} */
+
 
 main > aside {
   @media(width > 60rem) {
@@ -69,8 +55,7 @@ main > aside {
 }
 
 main > aside h2 {
-  font-size: var(--font-size-sm);
-  font-weight: normal;
+  font-size: var(--font-size-0);
 }
 
 main > aside nav a {
@@ -87,8 +72,7 @@ main > aside nav > ul {
 
 
 [aria-current="page"] {
-  font-weight: bold;
   text-decoration: none;
-  color: var(--color-ink);
+  color: var(--color-anchor-hover);
   cursor: default;
 }

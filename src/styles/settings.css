@@ -1,8 +1,7 @@
-:root {
-
- 
---spacing-gutter: var(--spacing-lg);
 
 
+form div:has(> label + :is(input, textarea, select)) {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sibling);
 }
-

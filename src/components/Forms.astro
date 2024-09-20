@@ -1,5 +1,9 @@
 <form>
-  <p>
+  <div>
+    <label for="cowbell">Cowbell</label>
+    <input type="range" id="cowbell" name="cowbell" min="0" max="100" value="80" step="10" />
+  </div>
+  <div>
     <label for='title'>Choose a title</label>
     <select id='title' required>
       <option disabled selected value=''>Select your title</option>
@@ -8,59 +12,35 @@
       <option>Mrs</option>
       <option>Other</option>
     </select>
-  </p>
-  <p>
+  </div>
+  <div>
     <label for='first_name'>First name</label>
     <input type='text' name='first_name' id='first_name' placeholder='Jane' />
-  </p>
-  <p>
+  </div>
+  <div>
     <label>Surname</label>
     <input type='text' name='surname' placeholder='Doe' />
-  </p>
-  <p>
+  </div>
+  <div>
     <label>Email</label>
     <input type='email' name='email' required='' placeholder='janedoe@mailbox.com' />
-  </p>
+  </div>
   <fieldset>
     <legend>Enquiry type</legend>
-    <label><input checked='checked' name='type' type='radio' value='sales' /> Sales</label><br />
-    <label><input name='type' type='radio' value='support' /> Support</label><br />
+    <label><input checked='checked' name='type' type='radio' value='sales' /> Sales</label>
+    <label><input name='type' type='radio' value='support' /> Support</label>
     <label><input name='type' type='radio' value='billing' /> Billing</label>
   </fieldset>
-  <p>
+  <div>
     <label>Message</label>
     <textarea rows='6' placeholder='Comments'></textarea>
-  </p>
-  <p>
-    <label for='terms'>
-      <input type='checkbox' id='terms' value='terms' />
-      <span>I agree to the <a href='#'>terms and conditions</a></span>
-    </label>
-  </p>
+  </div>
+  <div>
+    <input type='checkbox' id='terms' value='terms' />
+    <label for='terms'><span>I agree to the <a href='#'>terms and conditions</a></span></label>
+  </div>
   <div role='group'>
     <button><strong>Submit</strong></button>
     <button type='reset'>Reset</button>
   </div>
 </form>
-
-<style>
-  form > * + * {
-    margin-block-start: 1em;
-  }
-
-  form p {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-4xs);
-  }
-
-  legend {
-    margin-block-end: var(--spacing-4xs);
-  }
-
-  [role="group"]:has(button, input[type="button"]) {
-    display: flex;
-    gap: var(--spacing-4xs);
-  }
-
-</style>

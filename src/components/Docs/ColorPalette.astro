@@ -121,7 +121,7 @@ const toCapitals = (str: string): string => {
 
 <!-- Render swatches from palette.primary.css and palette.gray.css -->
 <section id='palettes'>
-  <h2 id="color-palettes">Color Palettes</h2>
+  <h2 id="color-palettes">Color Swatches</h2>
   {
     Object.entries(swatches).map(([color, items]) => (
       <div>
@@ -170,6 +170,10 @@ const toCapitals = (str: string): string => {
       border: var(--border-width-hairline) solid var(--color-separator);
     }
 
+    small {
+      display: inline-block;
+    }
+
     ul {
       /* max-width: 100%; */
       /* overflow-x: auto; */
@@ -178,8 +182,8 @@ const toCapitals = (str: string): string => {
 
       gap: var(--spacing-gutter);
       padding-block-end: var(--spacing-gutter); */
-      gap: var(--spacing-sm);
-      grid-template-columns: repeat(auto-fit, minmax(min(100%, 15ch), 1fr));
+      gap: var(--spacing-xs);
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 7ch), 1fr));
     }
 
 

@@ -3,20 +3,6 @@ title: "Colors"
 description: "Default colors"
 ---
 
-## File Reference
-
-```
-sol-css/
-    └── src/
-        └── theme/
-            ├── palettes/
-            │   ├── hues.css
-            │   ├── palette.gray.css
-            │   ├── palette.primary.css
-            │   └── palette.utility.css
-            └── color.css
-```
-
 The color space used by SOL is [okLCH](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/oklch). Why okLCH? It's much easier to predict color contrast compared to using other color spaces like RGB or HSL. 
 
 SOL uses a concept of palettes, ~~brazenly borrowed~~ shamelessly stolen from [Open Props](https://open-props.style/) instead of commonly defined color swatches typically found in libraries like TailwindCSS. Thereby, theming is much simpler with a lot less CSS.
@@ -26,17 +12,22 @@ More info:
 [Open Props oklch Palettes Beta](https://nerdy.dev/open-props-oklch-palettes-beta)
 
 
+## Color Palettes
+
 SOL includes 3 color palettes: 
 
 ```css
-/* (Brand/accent color scale) */ --color-primary-{1-16}
+--color-primary-{1-16}  
+/* (Brand color scale) */ 
+  
+--color-gray-{1-16}  
+/* (Neutral color scale) */
 
-/* (Neutral color scale) */ --color-gray-{1-16}
-
-/* (Color constants (Example: success, warning, error) */ --color-utility-{1-16}
+--color-utility-{1-16}  
+/* (Utility colors such as success, warning, error) */  
 ```
 
-## Primary Color Palette
+### Primary Color Palette
 
 [View Primary Color Palette](#color-palette-primary)
 
@@ -51,7 +42,7 @@ Override the default primary hue with any pre-defined hue properties (or use you
 
 [See all hue options](#hue-options)
 
-## Gray Color Palette
+### Gray Color Palette
 
 [View Gray Color Palette](#color-palette-gray)
 
@@ -65,13 +56,13 @@ The default gray palette settings:
 --gray-chroma: 0.1
 ```
 
-## Utility Colors 
+### Utility Colors 
 
 Utility colors serve a specific purpose; not meant for branding. For example, a red color might be used to indicate an alert. 
 
-To use a specific utility color, define the `--utility-hue` first. Then specify a number from the `--color-utility-{1-16}` scale.
+To use a specific utility color, define the `--utility-hue` first. Then specify a number from the `--color-utility-*` scale.
 
-### CSS Example: 
+#### CSS Example: 
 
 ```css
 mark {
@@ -80,12 +71,24 @@ mark {
 }
 ```
 
-### HTML Ouput: 
+#### HTML Ouput: 
 
 A <mark>highlighted</mark> word
-
-
 
 ---
 
 <ColorPalette />
+
+## File Reference
+
+```
+sol-css/
+    └── src/
+        └── theme/
+            ├── palettes/
+            │   ├── hues.css
+            │   ├── palette.gray.css
+            │   ├── palette.primary.css
+            │   └── palette.utility.css
+            └── color.css
+```

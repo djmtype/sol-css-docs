@@ -1,0 +1,39 @@
+[
+  {
+    "name": "Home",
+    "url": "/"
+  },
+  {
+    "name": "Blog",
+    "url": "/blog",
+    "rel": "prefetch"
+  },
+  {
+    "name": "Theme Info",
+    "url": "",
+    "children": true,
+    "childItems": [
+      {
+        "name": "Guide",
+        "url": "/guide",
+        "rel": "prefetch"
+      },
+      {
+        "name": "Markdown Sample",
+        "url": "/markdown-sample",
+        "rel": "prefetch"
+      },
+      {
+        "name": "Configuration",
+        "url": "/configuration",
+        "rel": "prefetch"
+      },
+      {
+        "name": "Repository",
+        "url": "https://github.com/djmtype/twenty-something",
+        "rel": "noopener",
+        "target": "_blank"
+      }
+    ]
+  }
+]
