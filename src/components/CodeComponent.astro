@@ -11,6 +11,7 @@ type Props = {
   theme?: any
   class?: string
   openState?: boolean
+  lineWrap?: boolean
   summary?: string
   file?: any
   path?: string
@@ -18,7 +19,7 @@ type Props = {
   rawFile?: any
 }
 
-const { file, lang = 'html', theme = 'css-variables', summary = 'HTML', path, rawFile, openState, class: className, ...restProps } = Astro.props as Props
+const { file, lang = 'html', theme = 'css-variables', summary = 'HTML', path, rawFile, openState, lineWrap = false, class: className, ...restProps } = Astro.props as Props
 
 // const { openState, class: className, ...restProps } = Astro.props as Props
 ---
@@ -34,7 +35,7 @@ const { file, lang = 'html', theme = 'css-variables', summary = 'HTML', path, ra
       code={file || html}
       lang={lang}
       theme='css-variables'
-      wrap
+      wrap={lineWrap}
     />
     <clipboard-copy for={`component-${uuid}`}>
       <span aria-label="Copy to clipboard">

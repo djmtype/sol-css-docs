@@ -13,7 +13,7 @@ export default defineConfig({
     
     AutoImport({
       imports: [
-        "./src/components/Component.astro",
+        "./src/components/CodeComponent.astro",
         "./src/components/Details.astro",
         "./src/components/Buttons.astro",
         "./src/components/Dialog.astro",

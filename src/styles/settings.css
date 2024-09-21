@@ -1,7 +1,5 @@
-
-
-form div:has(> label + :is(input, textarea, select)) {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-sibling);
+:root {
+  --utility-hue: var(--hue-pink);
+  --color-accent: light-dark(var(--color-utility-10), var(--color-utility-10));
 }
+
