@@ -47,16 +47,18 @@ const extractCssVariables = (cssStyles: string) => {
 
 // Read the CSS files
 const primaryCss = fs.readFileSync("./node_modules/sol-css/src/theme/palettes/palette.primary.css", "utf8")
+const secondaryCss = fs.readFileSync("./node_modules/sol-css/src/theme/palettes/palette.secondary.css", "utf8")
 const grayCss = fs.readFileSync("./node_modules/sol-css/src/theme/palettes/palette.gray.css", "utf8")
 const hueCss = fs.readFileSync("./node_modules/sol-css/src/theme/palettes/hues.css", "utf8")
 
 // Extract variables from all files
 const primarySwatches = extractCssVariables(primaryCss)
+const secondarySwatches = extractCssVariables(secondaryCss)
 const graySwatches = extractCssVariables(grayCss)
 const hueSwatches = extractCssVariables(hueCss)
 
 // Merge swatches from primary and gray palette
-const swatches = { ...primarySwatches, ...graySwatches }
+const swatches = { ...primarySwatches, ...secondarySwatches, ...graySwatches }
 
 // Helper function to capitalize words
 const toCapitals = (str: string): string => {
@@ -65,35 +67,6 @@ const toCapitals = (str: string): string => {
   return capitalizedWords.join(" ")
 }
 ---
-
-<script is:inline>
-  // Function to update the --primary-hue CSS variable with the corresponding --hue-* variable
-  const updateHue = (event) => {
-    const hueVariable = event.target.getAttribute("data-hue-variable")
-    document.documentElement.style.setProperty("--primary-hue", `var(${hueVariable})`)
-  }
-
-  // Attach event listeners to radio buttons and match the current --primary-hue on page load
-  document.addEventListener("DOMContentLoaded", () => {
-    const hueRadios = document.querySelectorAll('input[name="hue"]')
-
-    // Get the current --primary-hue value from the computed styles
-    const currentPrimaryHue = getComputedStyle(document.documentElement).getPropertyValue("--primary-hue").trim() // Remove any extra whitespace
-
-    // Match the current --primary-hue value with the corresponding radio button
-    hueRadios.forEach((radio) => {
-      const hueVariable = radio.getAttribute("data-hue-variable")
-      const hueValue = getComputedStyle(document.documentElement).getPropertyValue(hueVariable).trim()
-
-      if (hueValue === currentPrimaryHue) {
-        radio.checked = true // Set the corresponding radio button as checked
-      }
-
-      // Add event listener to update --primary-hue on change
-      radio.addEventListener("change", updateHue)
-    })
-  })
-</script>
 
 <!-- Render hues as radio buttons from hue.css -->
 <section id='hues'>
@@ -145,8 +118,10 @@ const toCapitals = (str: string): string => {
 
 
 <style>
+
   #hues {
     ul {
+      margin-block-start: 1em;
       columns: auto 20ch;
     }
      ul > * + * {
@@ -162,6 +137,9 @@ const toCapitals = (str: string): string => {
      div + div {
       margin-block-start: var(--spacing-xl);
     }
+    h2 + div {
+      margin-block-start: 1em;
+    }
     item {
       background-color: var(--swatch-color);
       display: inline-block;
@@ -175,19 +153,39 @@ const toCapitals = (str: string): string => {
     }
 
     ul {
-      /* max-width: 100%; */
-      /* overflow-x: auto; */
+      margin-block-start: 1em;
       display: grid;
-      /* grid-auto-flow: column;
-
-      gap: var(--spacing-gutter);
-      padding-block-end: var(--spacing-gutter); */
       gap: var(--spacing-xs);
       grid-template-columns: repeat(auto-fit, minmax(min(100%, 7ch), 1fr));
     }
-
-
-
-
   }
 </style>
+
+<script is:inline>
+  // Function to update the --primary-hue CSS variable with the corresponding --hue-* variable
+  const updateHue = (event) => {
+    const hueVariable = event.target.getAttribute("data-hue-variable")
+    document.documentElement.style.setProperty("--primary-hue", `var(${hueVariable})`)
+  }
+
+  // Attach event listeners to radio buttons and match the current --primary-hue on page load
+  document.addEventListener("DOMContentLoaded", () => {
+    const hueRadios = document.querySelectorAll('input[name="hue"]')
+
+    // Get the current --primary-hue value from the computed styles
+    const currentPrimaryHue = getComputedStyle(document.documentElement).getPropertyValue("--primary-hue").trim() // Remove any extra whitespace
+
+    // Match the current --primary-hue value with the corresponding radio button
+    hueRadios.forEach((radio) => {
+      const hueVariable = radio.getAttribute("data-hue-variable")
+      const hueValue = getComputedStyle(document.documentElement).getPropertyValue(hueVariable).trim()
+
+      if (hueValue === currentPrimaryHue) {
+        radio.checked = true // Set the corresponding radio button as checked
+      }
+
+      // Add event listener to update --primary-hue on change
+      radio.addEventListener("change", updateHue)
+    })
+  })
+</script>

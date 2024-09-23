@@ -1,5 +1,5 @@
 :root {
-  --utility-hue: var(--hue-pink);
+  /* color-scheme: light dark; */
   --color-accent: light-dark(var(--color-utility-10), var(--color-utility-10));
 }
 

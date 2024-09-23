@@ -1,7 +1,7 @@
 import { defineConfig } from 'astro/config';
 import { SITE } from "./src/config";
 import AutoImport from "astro-auto-import";
-import { Features } from "lightningcss"
+// import { Features } from "lightningcss"
 import mdx from '@astrojs/mdx';
 // import tailwindcss from '@tailwindcss/vite'
 
@@ -71,21 +71,22 @@ export default defineConfig({
     // plugins: [tailwindcss()],
     css: {
       devSourcemap: true,
-      transformer: "lightningcss",
-      lightningcss: {
-        // targets: browserslistToTargets(
-        //   browserslist("last 2 major versions and not dead and > .25%")
-        // ),
-        include: Features.Nesting,
-        // exclude: Features.LabColors | Features.P3Colors,
-        exclude: Features.OklabColors | Features.ColorFunction,
-        // minify: false,
-        // sourceMap: true,
-      },
+      // transformer: "lightningcss",
+      // lightningcss: {
+      //   // targets: browserslistToTargets(
+      //   //   browserslist("last 2 major versions and not dead and > .25%")
+      //   // ),
+      //   include: Features.Nesting,
+      //   // exclude: Features.LabColors | Features.P3Colors,
+      //   exclude: Features.OklabColors | Features.ColorFunction,
+      //   // minify: false,
+      //   // sourceMap: true,
+      // },
     },
     build: {
-      cssMinify: "lightningcss",
-      // cssMinify: false,
+      // cssMinify: "lightningcss",
+      cssMinify: false,
+      // sourcemap: true
     },
   }
 });

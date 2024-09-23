@@ -1,4 +1,5 @@
 ---
+// import 'sol-css/src/sol.css'
 import "@/styles/main.css"
 import type { MarkdownHeading } from "astro"
 import type { CollectionEntry } from "astro:content"
@@ -16,23 +17,18 @@ type Props = CollectionEntry<"docs">["data"] & {
 const currentPage = Astro.url.pathname
 const { title, description, headings, ...data } = Astro.props as Props
 const canonicalURL = new URL(Astro.url.pathname, Astro.site)
-
 ---
 
-<html dir="ltr" lang="en-us">
+<html dir='ltr' lang='en-us'>
   <head>
-    <BaseHead 
-    title={title} 
-    description={description} 
-    canonicalUrl={canonicalURL} 
-    {...data} />
+    <BaseHead title={title} description={description} canonicalUrl={canonicalURL} {...data} />
   </head>
 
   <body>
     <SkipLink />
     <!-- <button id="themeToggle">Toggle</button> -->
     <BaseHeader currentPage={currentPage} />
-    <div aria-live="polite" id="announce"></div>
+    <div aria-live='polite' id='announce'></div>
     <main id='main-content wrapper'>
       <slot />
     </main>

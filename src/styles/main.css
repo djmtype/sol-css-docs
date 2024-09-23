@@ -1,4 +1,4 @@
-@layer theme, library, layout, utilities;
+@layer theme, library, layout, settings, utilities;
 
 /* @layer base, settings, theme, content, components; */
 
@@ -9,6 +9,10 @@
 
 
 @import '../../node_modules/sol-css/src/sol.css' layer(library);
+
+/* @import '../../node_modules/sol-css/build/sol.css' layer(library); */
+
+
 
 /* @import '../../../src/components/button.css';
 
@@ -22,4 +26,8 @@
 
 @import './utilities/accessibility.css' layer(utilities);
 
-@import './settings.css';
+@import './settings.css' layer(settings);
+
+
+
+

@@ -4,16 +4,14 @@
   --astro-code-color-text: var(--color-ink);
   --astro-code-token-comment: var(--color-ink-muted);
   --astro-code-token-keyword: var(--color-ink-primary);
-  --astro-code-token-function: var(--color-ink-utility);
+  --astro-code-token-function: var(--color-ink-secondary);
 }
 
-/* span[style*="--astro-code-token-comment"] {
-  display: block;
-  width: 100%;
-} */
+span[style*="--astro-code-token-comment"] {
+  font-style: italic;
+}
 
 pre {
-  --utility-hue: var(--hue-pink);
   padding: var(--spacing-panel);
   border-radius: var(--radius-panel);
   

@@ -14,11 +14,14 @@ More info:
 
 ## Color Palettes
 
-SOL includes 3 color palettes: 
+SOL includes 4 color palettes: 
 
 ```css
 --color-primary-{1-16}  
 /* (Brand color scale) */ 
+
+--color-secondary-{1-16}  
+/* (Secondary color scale, optional) */ 
   
 --color-gray-{1-16}  
 /* (Neutral color scale) */
@@ -31,10 +34,23 @@ SOL includes 3 color palettes:
 
 [View Primary Color Palette](#color-palette-primary)
 
-Override the default primary hue with any pre-defined hue properties (or use your own): 
+Override the default primary hue with any pre-defined `--hue-*` properties, or use a number: 
 
 ```css
 --primary-hue: var(--hue-*)
+/* 
+--hue-{red | pink | purple | violet | indigo | blue | cyan | teal | green | lime | yellow | orange} 
+*/
+```
+
+### Secondary Color Palette
+
+[View Secondary Color Palette](#color-palette-secondary)
+
+Override the default secondary hue with any pre-defined `--hue-*` properties, or use a number: 
+
+```css
+--secondary-hue: var(--hue-*) 
 /* 
 --hue-{red | pink | purple | violet | indigo | blue | cyan | teal | green | lime | yellow | orange} 
 */
@@ -86,9 +102,11 @@ sol-css/
     └── src/
         └── theme/
             ├── palettes/
+            │   ├── controls.css
             │   ├── hues.css
             │   ├── palette.gray.css
             │   ├── palette.primary.css
+            │   ├── palette.secondary.css
             │   └── palette.utility.css
             └── color.css
 ```

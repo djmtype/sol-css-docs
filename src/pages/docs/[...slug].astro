@@ -48,12 +48,12 @@ const { Content, headings } = await entry.render();
 	}
 
 	.prose hr {
-
-		--_flow: var(--spacing-2xl); 
-		+ * {
-		--_flow: var(--spacing-2xl); 
-		}
+		--_flow: var(--spacing-xl); 
 	}
+
+	.prose hr + * {
+		--_flow: var(--spacing-xl); 
+		}
 
 
 </style>
