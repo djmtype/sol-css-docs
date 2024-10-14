@@ -1,59 +1,52 @@
 ---
 import { slugify } from "@/utils/global"
-import { type CollectionEntry, getCollection } from 'astro:content';
+import { type CollectionEntry, getCollection } from "astro:content"
 
-import Layout from '@/layouts/Layout.astro';
+import Layout from "@/layouts/Layout.astro"
 import DocsNav from "@/components/Base/DocsNav.astro"
 export async function getStaticPaths() {
-	const docs = await getCollection('docs');
-	return docs.map((entry: any) => ({
-		params: {
-			slug: entry.slug,
-		},
-		props: entry,
-	}));
+  const docs = await getCollection("docs")
+  return docs.map((entry: any) => ({
+    params: {
+      slug: entry.slug,
+    },
+    props: entry,
+  }))
 }
-type Props = CollectionEntry<'docs'>;
-
+type Props = CollectionEntry<"docs">
 
 const currentPage = Astro.url.pathname
 
-const entry = Astro.props;
+const entry = Astro.props
 
-const { Content, headings } = await entry.render();
+const { Content, headings } = await entry.render()
 ---
 
 <Layout headings={headings} {...entry.data}>
-	
-	<aside id='main-aside'>
-		<DocsNav currentPage={currentPage} />
-	</aside>
-	<article class="main-article">
-		
-			<div class="prose">
-				<h1 id={slugify(entry.data.title)}>{entry.data.title}</h1>
-					<Content />
-			</div>
-
-</article>
-	
+  <aside id="main-aside">
+    <DocsNav currentPage={currentPage} />
+  </aside>
+  <article class="main-article">
+    <div class="prose">
+      <h1 id={slugify(entry.data.title)}>{entry.data.title}</h1>
+      <Content />
+    </div>
+  </article>
 </Layout>
 
 <style is:global>
-	.prose {
-		--_flow: var(--spacing-flow);
-	}
-	.prose > * + * {
-		margin-block-start: var(--_flow);
-	}
+  .prose {
+    --_flow: var(--spacing-flow);
+  }
+  .prose > * + * {
+    margin-block-start: var(--_flow);
+  }
 
-	.prose hr {
-		--_flow: var(--spacing-xl); 
-	}
+  .prose hr {
+    --_flow: var(--spacing-xl);
+  }
 
-	.prose hr + * {
-		--_flow: var(--spacing-xl); 
-		}
-
-
+  .prose hr + * {
+    --_flow: var(--spacing-xl);
+  }
 </style>
