@@ -1,9 +1,11 @@
+import { glob, file } from 'astro/loaders';
 import { z, defineCollection } from 'astro:content';
 
 import { SITE } from '@/config';
 
 const docs = defineCollection({
-	type: 'content',
+	// type: 'content',
+	loader: glob({ pattern: "**/*.{md,mdx}", base: "src/content/docs" }),
 	schema: z.object({
 		title: z.string().default(SITE.title),
 		description: z.string().default(SITE.description),
@@ -15,6 +17,24 @@ const docs = defineCollection({
 			.optional(),
 	}),
 });
+
+
+
+const docsNavigation = defineCollection({
+  loader: file("src/data/docsNavigation.json"),
+  schema: z.object({
+    id: z.string(),
+    name: z.string(),
+    links: z.array(
+      z.object({
+        label: z.string(),
+        path: z.string(),
+      })
+    )
+  })
+});
+
+
 
 // const blog = defineCollection({
 	
@@ -36,6 +56,6 @@ const docs = defineCollection({
 
 
 export const collections = {
-  // 'blog': blog,
-  'docs': docs
+  'docs': docs,
+	'docsNavigation': docsNavigation
 };

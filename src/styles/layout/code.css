@@ -1,7 +1,7 @@
 * {
-  --astro-code-color-background: var(--color-surface-bright);
+  --astro-code-background: var(--color-surface-bright);
   --astro-code-token-string-expression: var(--color-ink-primary);
-  --astro-code-color-text: var(--color-ink);
+  --astro-code-text: var(--color-ink);
   --astro-code-token-comment: var(--color-ink-muted);
   --astro-code-token-keyword: var(--color-ink-primary);
   --astro-code-token-function: var(--color-ink-secondary);

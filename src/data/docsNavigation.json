@@ -1,0 +1,60 @@
+[
+  {
+    "id": "getting-started",
+    "name": "Getting Started",
+    "links": [
+      {
+        "label": "Intro",
+        "path": "docs/intro"
+      },
+      {
+        "label": "Settings",
+        "path": "docs/settings"
+      }
+    ]
+  },
+  {
+    "id": "elements",
+    "name": "Elements",
+    "links": [
+      {
+        "label": "Colors",
+        "path": "docs/colors"
+      }
+    ]
+  },
+  {
+    "id": "components",
+    "name": "Components",
+    "links": [
+      {
+        "label": "Buttons",
+        "path": "docs/buttons"
+      },
+      {
+        "label": "Details",
+        "path": "docs/details"
+      },
+      {
+        "label": "Dialog",
+        "path": "docs/dialog"
+      },
+      {
+        "label": "Images",
+        "path": "docs/images"
+      },
+      {
+        "label": "Forms",
+        "path": "docs/forms"
+      },
+      {
+        "label": "Progress",
+        "path": "docs/progress"
+      },
+      {
+        "label": "Tables",
+        "path": "docs/tables"
+      }
+    ]
+  }
+]

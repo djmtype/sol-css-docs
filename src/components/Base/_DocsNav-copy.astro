@@ -1,0 +1,47 @@
+---
+import { DOCS_NAV } from '@/config';
+
+type Props = {
+	currentPage: string;
+};
+
+const { currentPage } = Astro.props;
+const currentPageMatch = currentPage.endsWith('/')
+	? currentPage.slice(1, -1)
+	: currentPage.slice(1);
+const docsNav = DOCS_NAV;
+---
+
+<nav aria-label='Documentation Navigation' id="docs-nav">
+	<ul role="list">
+		{
+			Object.entries(docsNav).map(([header, children]) => (
+				<li>
+						<h2>{header}</h2>
+						<ul role='list'>
+							{children.map((child) => {
+								const url = Astro.site?.pathname + child.link;
+								return (
+									<li>
+										<a href={url} aria-current={currentPageMatch === child.link ? 'page' : false}>
+											{child.text}
+										</a>
+									</li>
+								);
+							})}
+						</ul>
+				</li>
+			))
+		}
+	</ul>
+</nav>
+
+<script is:inline>
+	// window.addEventListener('DOMContentLoaded', () => {
+	// 	var target = document.querySelector('[aria-current="page"]');
+	// 	if (target && target.offsetTop > window.innerHeight - 100) {
+	// 		document.querySelector('.nav-groups').scrollTop = target.offsetTop;
+	// 	}
+	// });
+</script>
+

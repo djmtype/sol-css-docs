@@ -1,12 +1,18 @@
 ---
 import Layout from "@/layouts/Layout.astro"
+import { getCollection } from "astro:content"
 
 const title = "Welcome"
 const description = "A classless CSS library"
+
+const nav = await getCollection("docsNavigation")
 ---
 
 <Layout title={title} description={description}>
 
+  <ul>
+
+  </ul>
     <article>
       <header>
         <hgroup>

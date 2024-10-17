@@ -11,31 +11,65 @@ On some elementary level, SOL can be customized since it's built upon CSS custom
 
 Honestly, I can't think of a good reason *for* or *against*. There might be better suited classless libraries out in the wild like [picoCSS](https://picocss.com), [WaterCSS](https://watercss.kognise.dev/), and [Simple.css](https://simplecss.org/). SOL is yet another option. Its footprint isn't the smallest, nor the most complete. But, if you want to try something new, then this one's for you! 
 
-## Usage
+## Overview
 
-Choose one of the following options.
+SOL comes in 3 flavors. Choose your own adventure.
 
-### Install from a CDN 
+### Reset
+A compilation of primitive styles from other resets like Andy Bell and Open Props. All rules are defined within `:where()` for easy overrides.  
 
-Add to your `<head>` 
+### Core
+Builds upon the reset, plus includes a theme layer for colors, typography, spacing, and light/dark schemes all defined by custom properties. 
+
+### Complete
+Includes the core foundation plus styles for most browser-shipped HTML elements like forms, dialog, details/summary, progress, and table.
+
+## Installation
+
+The installation and usage instructions apply to the **Complete** package, but the same rules can be applied for adding the **Reset** or **Core** instead. 
+
+Choose 1 of the 3 options below.
+
+### Reference from a CDN 
+
+Add the following syntax to your document's `<head>` 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/djmtype/build/sol.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/djmtype/sol-css@refs/heads/main/build/minified/sol.css">
 ```
-
-### Install from NPM
-
-```bash
-npm i sol-css
-```
-Then, import `sol-css/sol.css` into your project.
-
 
 ### Install Manually
 
-Download [SOL-CSS](https://github.com/djmtype/sol-css).  
-Place `sol-css.css` within your styles directory.  
-Add a `<link>` within your `<head>`.
+1. Download [SOL CSS](https://github.com/djmtype/sol-css/archive/refs/heads/main.zip).  
+2. Open up the `build` or `build/minified` directory.  
+3. Place `sol.css` within your `styles` directory.  
+4. Add a `<link>` within your `<head>`.
 
 ```html
-<link rel="stylesheet" href="styles/sol-css.css">
+<!-- Example -->
+<link rel="stylesheet" href="styles/sol.css">
 ```
+
+### Install the Package
+
+During the alpha stage, SOL is currently unavailable on *npmjs.com*.  
+Install directly from Github using NPM or other package manager.
+
+```zsh
+npm install github:djmtype/sol-css#main
+```
+#### Use with LightningCSS or PostCSS[^1]
+
+[^1]: PostCSS requires a few additional plugins: [`postcss-import`](https://www.npmjs.com/package/postcss-import), [`postcss-input-range`](https://www.npmjs.com/package/postcss-input-range), [`postcss-preset-env`](https://www.npmjs.com/package/postcss-preset-env).
+
+```css
+@import "sol-css/sol.css";
+/* OR */
+/* @import "node_modules/sol-css/sol.css" */
+```
+
+#### Use without a Process
+
+```css
+@import "sol-css/build/sol.css";
+```  
+
