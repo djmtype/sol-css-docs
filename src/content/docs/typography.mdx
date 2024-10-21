@@ -1,0 +1,68 @@
+---
+title: "Typography"
+description: "Documentation for typographical elements including typescale, headings, lists, inline elements, and blockquote."
+---
+import HeadingsScript from "@/components/HeadingsScript.astro";
+
+## Overview
+
+### Font Size
+
+The base font size utilizes a `clamp` function on the `html` element for better readability.
+
+```css
+:where(html) {
+   --font-size-default: clamp(1rem, 0.93rem + 0.35vw, 1.25rem);
+}
+```
+
+Providing a value for `--font-size-default` will override the initial setting.
+
+### Font Scale
+
+The default font scale is set to `1.25`, or *Major Third*.  
+[Check out other type scales](https://typescale.com/)
+
+Providing a value for `--font-scale-default` will override the initial setting. 
+
+```css
+:where(html) {
+   --font-scale-default: 1.25;
+}
+```
+
+### Typescale
+
+Use `--font-size-{00-6}` when setting font sizes.
+
+<Typescale />
+
+---
+
+## Headings
+
+<CodeComponent lineWrap class="flow">
+  <Headings />
+  <HeadingsScript />
+</CodeComponent>
+
+## Lists
+
+### Unordered, Ordered, Definition
+
+<CodeComponent lineWrap class="flow">
+  <Lists />
+</CodeComponent>
+
+## Inline Text Elements
+
+<CodeComponent>
+  <InlineText />
+</CodeComponent>
+
+## Blockquote
+
+<CodeComponent>
+  <Blockquote />
+</CodeComponent>
+

@@ -22,7 +22,7 @@
 @import './layout/code.css' layer(layout);
 /* @import './utilities/wrapper.css' layer(utilities); */
 
-/* @import './utilities/flow.css' layer(utilities); */
+@import './utilities/flow.css' layer(utilities);
 
 @import './utilities/accessibility.css' layer(utilities);
 

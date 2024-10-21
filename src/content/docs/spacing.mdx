@@ -1,0 +1,43 @@
+---
+title: "Spacing"
+description: "Documentation for spacing scale."
+---
+
+## Overview
+
+### Spacing Size
+
+The base space size utilizes a `clamp` function on the `html` element for better readability.
+
+```css
+:where(html) {
+  --spacing-size-default: clamp(1rem, 0.93rem + 0.35vw, 1.25rem);
+}
+```
+
+### Spacing Scale
+
+The spacing scale is based on a `1.25` ratio.
+
+Providing a value for `--spacing-scale-default` will override this setting. 
+
+```css
+:where(html) {
+  --spacing-scale-default: 1.25;
+}
+```
+
+### Spacing Gutter
+
+As a optional means for providing consistency, an alias property has been included, `--spacing-gutter`. 
+
+```css
+:where(html) {
+  --spacing-gutter: var(--spacing-lg);
+}
+```
+---
+
+## Visual Spacing Scale
+
+<Spacing />

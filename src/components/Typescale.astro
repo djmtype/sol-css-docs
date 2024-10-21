@@ -1,0 +1,38 @@
+---
+const phrase = "The quick brown fox jumps over the lazy dog."
+const fontSizes = ["--font-size-00", ...Array.from({ length: 7 }, (_, i) => `--font-size-${i}`)]
+---
+
+<ul role="list">
+  {
+    fontSizes.map((fontSize) => (
+      <li>
+        <p style={{ fontSize: `var(${fontSize})` }}>{phrase}</p>
+        <code>{fontSize}</code>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+  }
+  li {
+    display: flex;
+    flex-direction: column;
+gap: var(--spacing-sibling);
+  }
+
+  code {
+    align-self: start;
+  }
+  p {
+    line-height: calc(1em + 0.5rem);
+    text-overflow: ellipsis;
+    overflow: clip;
+    white-space: nowrap;
+  }
+</style>

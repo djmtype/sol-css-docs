@@ -1,5 +1,9 @@
 ---
 import { slugify } from "@/utils/global"
+
+import { DOCS_NAV } from '@/config';
+
+
 import { type CollectionEntry, getCollection } from "astro:content"
 import { render } from "astro:content";
 import Layout from "@/layouts/Layout.astro"
@@ -15,9 +19,30 @@ export async function getStaticPaths() {
 }
 type Props = CollectionEntry<"docs">
 
+// const { currentPage } = Astro.props;
 const currentPage = Astro.url.pathname
 
 const entry = Astro.props
+
+type NavItem = {
+  text: string;
+  link: string;
+}
+
+type NavSection = {
+  [header: string]: NavItem[];
+}
+
+const findHeader = (nav: NavSection, currentPage: string): string | null => {
+  for (const [header, pages] of Object.entries(nav)) {
+    if (pages.some(page => currentPage.includes(page.link))) {
+      return header;
+    }
+  }
+  return null;
+};
+
+const header = findHeader(DOCS_NAV, currentPage);
 
 
 const { Content, headings } = await render(entry)
@@ -29,7 +54,10 @@ const { Content, headings } = await render(entry)
   </aside>
   <article class="main-article">
     <div class="prose">
-      <h1 id={slugify(entry.data.title)}>{entry.data.title}</h1>
+      <hgroup>
+        {header && <p set:html={header} />}
+        <h1 id={slugify(entry.data.title)}>{entry.data.title}</h1>
+      </hgroup>
       <Content />
     </div>
   </article>
@@ -49,5 +77,23 @@ const { Content, headings } = await render(entry)
 
   .prose hr + * {
     --_flow: var(--spacing-xl);
+  }
+
+
+
+  .prose hgroup + * {
+    margin-block-start: var(--spacing-2xl);
+  }
+
+  .prose hgroup h1 {
+    font-size: var(--font-size-5);
+  }
+
+  .prose hgroup p {
+    color: var(--color-ink-primary);
+    text-transform: uppercase;
+    letter-spacing: .10em;
+    font-weight: 600;
+    font-size: var(--font-size-00);
   }
 </style>

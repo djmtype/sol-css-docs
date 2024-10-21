@@ -28,8 +28,8 @@ export const DOCS_NAV: DocsNav = {
   ],
   Elements: [
     { text: "Colors", link: "docs/colors" },
-    // { text: "Space", link: "docs/space" },
-    // { text: "Typography", link: "docs/typography" },
+    { text: "Spacing", link: "docs/spacing" },
+     { text: "Typography", link: "docs/typography" },
   ],
   Components: [
     { text: "Buttons", link: "docs/buttons" },

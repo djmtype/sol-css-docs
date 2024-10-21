@@ -1,0 +1,107 @@
+<ul role="list">
+  <li>
+		<code>--spacing-3xs</code>
+	</li>
+  <li>
+		<code>--spacing-2xs</code>
+	</li>
+  <li>
+		<code>--spacing-xs</code>
+	</li>
+  <li>
+		<code>--spacing-sm</code>
+	</li>
+  <li>
+		<code>--spacing-md</code>
+	</li>
+  <li>
+		<code>--spacing-lg</code>
+	</li>
+  <li>
+		<code>--spacing-xl</code>
+	</li>
+  <li>
+		<code>--spacing-2xl</code>
+	</li>
+  <li>
+		<code>--spacing-3xl</code>
+	</li>
+  <li>
+		<code>--spacing-4xl</code>
+	</li>
+  <li>
+		<code>--spacing-5xl</code>
+	</li>
+  <li>
+		<code>--spacing-6xl</code>
+	</li>
+</ul>
+
+<style>
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-gutter);
+  }
+
+  li {
+    --_item-size: var(--spacing-3xs);
+    position: relative;
+    display: flex;
+    gap: var(--spacing-xs);
+  }
+
+  li::before {
+    content: "";
+    background-color: var(--color-surface-primary-highlight);
+    height: 1lh;
+    width: var(--_item-size);
+    display: inline-block;
+  }
+
+  li:first-child {
+    --_item-size: var(--spacing-3xs);
+  }
+
+  li:nth-child(2) {
+    --_item-size: var(--spacing-2xs);
+  }
+
+  li:nth-child(3) {
+    --_item-size: var(--spacing-xs);
+  }
+
+  li:nth-child(4) {
+    --_item-size: var(--spacing-sm);
+  }
+  li:nth-child(5) {
+    --_item-size: var(--spacing-md);
+  }
+  li:nth-child(6) {
+    --_item-size: var(--spacing-lg);
+  }
+
+  li:nth-child(7) {
+    --_item-size: var(--spacing-xl);
+  }
+
+  li:nth-child(8) {
+    --_item-size: var(--spacing-2xl);
+  }
+  li:nth-child(9) {
+    --_item-size: var(--spacing-3xl);
+  }
+
+  li:nth-child(10) {
+    --_item-size: var(--spacing-4xl);
+  }
+
+  li:nth-child(11) {
+    --_item-size: var(--spacing-5xl);
+  }
+
+  li:nth-child(12) {
+    --_item-size: var(--spacing-6xl);
+  }
+
+</style>

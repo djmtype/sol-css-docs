@@ -1,47 +1,54 @@
 ---
 import { DOCS_NAV } from '@/config';
-
-type Props = {
-	currentPage: string;
-};
-
+import { slugify } from '@/utils/global';
 const { currentPage } = Astro.props;
 const currentPageMatch = currentPage.endsWith('/')
 	? currentPage.slice(1, -1)
 	: currentPage.slice(1);
 const docsNav = DOCS_NAV;
+
+// Precompute whether each details element should be open on the server side
+const navSections = Object.entries(docsNav).map(([header, children]) => {
+  // Check if any child link has aria-current="page"
+  const hasCurrentPageLink = children.some((child) => currentPageMatch === child.link);
+
+  return {
+    header,
+    children,
+    hasCurrentPageLink,
+  };
+});
 ---
 
-<nav aria-label='Documentation Navigation' id="docs-nav">
-	<ul role="list">
-		{
-			Object.entries(docsNav).map(([header, children]) => (
-				<li>
-						<h2>{header}</h2>
-						<ul role='list'>
-							{children.map((child) => {
-								const url = Astro.site?.pathname + child.link;
-								return (
-									<li>
-										<a href={url} aria-current={currentPageMatch === child.link ? 'page' : false}>
-											{child.text}
-										</a>
-									</li>
-								);
-							})}
-						</ul>
-				</li>
-			))
-		}
-	</ul>
+<nav aria-label="Documentation Navigation" id="docs-nav">
+	{navSections.map(({ header, hasCurrentPageLink, children }) => (
+		<details open={hasCurrentPageLink}>
+			<summary>{header}</summary>
+			<div>
+				<ul role="list">
+					{children.map((child) => {
+						const url = `${Astro.site?.pathname}${child.link}`;
+						return (
+							<li data-item={slugify(header)}>
+								<a href={url} aria-current={currentPageMatch === child.link ? 'page' : undefined}>
+									{child.text}
+								</a>
+							</li>
+						);
+					})}
+				</ul>
+			</div>
+		</details>
+	))}
 </nav>
 
-<script is:inline>
-	// window.addEventListener('DOMContentLoaded', () => {
-	// 	var target = document.querySelector('[aria-current="page"]');
-	// 	if (target && target.offsetTop > window.innerHeight - 100) {
-	// 		document.querySelector('.nav-groups').scrollTop = target.offsetTop;
-	// 	}
-	// });
-</script>
+
+<!-- <script is:inline>
+	window.addEventListener('DOMContentLoaded', () => {
+		var target = document.querySelector('[aria-current="page"]');
+		if (target && target.offsetTop > window.innerHeight - 100) {
+			document.querySelector('.nav-groups').scrollTop = target.offsetTop;
+		}
+	});
+</script> -->
 
