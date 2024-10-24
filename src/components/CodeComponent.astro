@@ -26,17 +26,17 @@ const { file, lang = 'html', theme = 'css-variables', summary = 'HTML', path, ra
 
 <div class={className} style={{ ...restProps.style }} {...restProps} set:html={html} />
 
-<details open={openState ? "" : undefined}>
+<details open={openState ? true : undefined}>
   <summary>{summary}</summary>
   <div>
     {path && <code class="path">{path}</code>}
-    <Code
-      id={`component-${uuid}`}
-      code={file || html}
-      lang={lang}
-      theme='css-variables'
-      wrap={lineWrap}
-    />
+      <Code
+        id={`component-${uuid}`}
+        code={file || html}
+        lang={lang}
+        theme='css-variables'
+        wrap={lineWrap}
+      />
     <clipboard-copy for={`component-${uuid}`}>
       <span aria-label="Copy to clipboard">
         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" vector-effect="non-scaling-stroke"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></g></svg>

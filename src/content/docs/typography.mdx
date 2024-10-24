@@ -8,7 +8,7 @@ import HeadingsScript from "@/components/HeadingsScript.astro";
 
 ### Font Size
 
-The base font size utilizes a `clamp` function on the `html` element for better readability.
+The default font size utilizes a `clamp` function for better readability. Its ideal value is based on a ~1440px viewport.
 
 ```css
 :where(html) {
@@ -16,14 +16,10 @@ The base font size utilizes a `clamp` function on the `html` element for better 
 }
 ```
 
-Providing a value for `--font-size-default` will override the initial setting.
-
 ### Font Scale
 
-The default font scale is set to `1.25`, or *Major Third*.  
+The default font scale is based on a `1.25` ratio, or *Major Third*.  
 [Check out other type scales](https://typescale.com/)
-
-Providing a value for `--font-scale-default` will override the initial setting. 
 
 ```css
 :where(html) {
@@ -31,38 +27,42 @@ Providing a value for `--font-scale-default` will override the initial setting.
 }
 ```
 
-### Typescale
+---
 
-Use `--font-size-{00-6}` when setting font sizes.
+## Visual Typescale
+
+Font size properties are defined using `--font-size-{00-6}`.
 
 <Typescale />
 
 ---
 
-## Headings
+## Text Elements
+
+### Headings
 
 <CodeComponent lineWrap class="flow">
   <Headings />
-  <HeadingsScript />
 </CodeComponent>
+<HeadingsScript />
 
-## Lists
+### Lists
 
-### Unordered, Ordered, Definition
+#### Unordered, Ordered, Definition
 
-<CodeComponent lineWrap class="flow">
+<CodeComponent lineWrap style={{display: 'grid', gap: 'var(--spacing-sibling) var(--spacing-gutter)', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 20ch), 1fr))', alignItems: 'baseline', justifyItems: 'start'}}>
   <Lists />
 </CodeComponent>
 
-## Inline Text Elements
+### Inline Text Elements
 
-<CodeComponent>
+<CodeComponent lineWrap style={{display: 'grid', gap: 'var(--spacing-sibling) var(--spacing-gutter)', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 20ch), 1fr))', alignItems: 'baseline', justifyItems: 'start'}}>
   <InlineText />
 </CodeComponent>
 
-## Blockquote
+### Blockquote
 
-<CodeComponent>
+<CodeComponent lineWrap>
   <Blockquote />
 </CodeComponent>
 

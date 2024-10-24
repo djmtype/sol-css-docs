@@ -13,7 +13,11 @@ Honestly, I can't think of a good reason *for* or *against*. There might be bett
 
 ## Overview
 
-SOL comes in 3 flavors. Choose your own adventure.
+SOL comes in 3 compiled flavors. They were compiled using the ["defaults" browserslist configuration](https://browsersl.ist/#q=defaults). 
+
+For more flexibility, choose [the installation package](#install-the-package) instead.
+
+Choose your own adventure.
 
 ### Reset
 A compilation of primitive styles from other resets like Andy Bell and Open Props. All rules are defined within `:where()` for easy overrides.  
@@ -24,11 +28,11 @@ Builds upon the reset, plus includes a theme layer for colors, typography, spaci
 ### Complete
 Includes the core foundation plus styles for most browser-shipped HTML elements like forms, dialog, details/summary, progress, and table.
 
-## Installation
+## Usage
 
-The installation and usage instructions apply to the **Complete** package, but the same rules can be applied for adding the **Reset** or **Core** instead. 
+The usage instructions apply to the **Complete** package, but the same rules can be applied for adding the **Reset** or **Core** instead. 
 
-Choose 1 of the 3 options below.
+Choose one of the options below.
 
 ### Reference from a CDN 
 
@@ -52,7 +56,7 @@ Add the following syntax to your document's `<head>`
 ### Install the Package
 
 During the alpha stage, SOL is currently unavailable on *npmjs.com*.  
-Install directly from Github using NPM or other package manager.
+Install directly from Github using NPM or other package manager. 
 
 ```zsh
 npm install github:djmtype/sol-css#main
@@ -67,7 +71,7 @@ npm install github:djmtype/sol-css#main
 /* @import "node_modules/sol-css/sol.css" */
 ```
 
-#### Use without a Process
+#### Reference the Compiled Version
 
 ```css
 @import "sol-css/build/sol.css";

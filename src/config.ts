@@ -27,7 +27,7 @@ export const DOCS_NAV: DocsNav = {
     { text: "Settings", link: "docs/settings" }
   ],
   Elements: [
-    { text: "Colors", link: "docs/colors" },
+    { text: "Color", link: "docs/color" },
     { text: "Spacing", link: "docs/spacing" },
      { text: "Typography", link: "docs/typography" },
   ],

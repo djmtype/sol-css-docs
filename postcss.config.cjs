@@ -12,10 +12,12 @@ module.exports = {
     postcssImport(),
     postcssInput(),
     postcssPresetEnv({
+
       stage: 2,
       // minimumVendorImplementations: 1,
       autoprefixer: true,
       features: {
+        "case-insensitive-attributes": false,
         "logical-properties-and-values": false,
         "prefers-color-scheme-query": false,
         "gap-properties": false,

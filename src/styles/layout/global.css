@@ -24,29 +24,29 @@ body > header nav > ul a {
   display: flex;
 }
 
-
-
 main:has(> aside) {
   display: grid;
-grid-template-columns: minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--spacing-gutter);
   padding-block: var(--spacing-gutter);
 
   margin-inline: auto;
-  inline-size: min(min(var(--breakpoint-lg), 100%), calc(100% - (var(--spacing-gutter) * 2)));
+  inline-size: min(
+    min(var(--breakpoint-lg), 100%),
+    calc(100% - (var(--spacing-gutter) * 2))
+  );
 
   @media (width > 60rem) {
     padding-block: var(--spacing-2xl);
-    grid-template-columns: minmax(min(100%, 20ch), .5fr) minmax(min(50vw, 30ch), 1.25fr);
-    
+    grid-template-columns: minmax(min(100%, 20ch), 0.5fr) minmax(
+        min(50vw, 30ch),
+        1.25fr
+      );
   }
 }
 
-
-
-
 main > aside {
-  @media(width > 60rem) {
+  @media (width > 60rem) {
     align-self: start;
     position: sticky;
     top: var(--spacing-gutter);
@@ -62,41 +62,36 @@ main > aside nav {
 
 main > aside nav a {
   display: flex;
-padding: 0;
+  padding: 0;
 }
 
-main > aside nav > ul {
+main > aside nav ul {
   display: flex;
-  flex-direction: column;
-  gap: var(--spacing-xs);
+  flex-wrap: wrap;
+  column-gap: var(--spacing-sibling);
+    > * {
+      flex: 0 1 15ch;
+    }
 }
 
 main > aside nav details > summary:not([role="button"]) {
   color: var(--color-ink-muted);
   border: unset;
-  background: unset;
-  padding: unset;
-  &:hover, &:focus-visible {
+  &:hover,
+  &:focus-visible {
     color: revert;
   }
 
-  &::after {
-    right: 0;
-  }
   & + div {
-    padding-block: unset;
-    background: unset;
     border: unset;
-    margin-block-start: unset;
   }
 }
-
-
-
 
 main > aside nav details[open] > summary:not([role="button"]) {
-  color: var(--color-ink);
+  color: unset;
+
 }
+
 
 [aria-current="page"] {
   text-decoration: none;
@@ -104,3 +99,4 @@ main > aside nav details[open] > summary:not([role="button"]) {
   cursor: default;
   font-weight: 600;
 }
+

@@ -76,7 +76,7 @@ const toCapitals = (str: string): string => {
       Object.entries(hueSwatches).map(([color, items]) => (
         <li style={`--primary-hue: var(--hue-${color})`}>
           {items.map(({ name, value }) => (
-            <label style="color: var(--color-primary-5)">
+            <label style="color: light-dark(var(--color-primary-10), var(--color-primary-5))">
               <input type='radio' name='hue' data-hue-variable={`--${name}`} />
               <strong>{toCapitals(color)} </strong>
               <small>

@@ -8,7 +8,7 @@ import mdx from '@astrojs/mdx';
 // https://astro.build/config
 export default defineConfig({
   site: SITE.url,
-  compressHTML: false,
+  compressHTML: true,
   integrations: [
     
     AutoImport({
@@ -91,7 +91,7 @@ export default defineConfig({
     },
     build: {
       // cssMinify: "lightningcss",
-      cssMinify: false,
+      cssMinify: true,
       // sourcemap: true
     },
   }

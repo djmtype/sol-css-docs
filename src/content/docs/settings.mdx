@@ -1,18 +1,16 @@
 ---
 title: "Settings"
-description: "An indepth look at SOL's options"
+description: "An in-depth look at SOL's options"
 ---
 import generalSettings from "/node_modules/sol-css/src/settings.css?raw";
 
-import colorControls from "/node_modules/sol-css/src/theme/palettes/controls.css?raw";
-
-import colorSettings from "/node_modules/sol-css/src/theme/color.css?raw";
+import colorSettings from "/node_modules/sol-css/src/theme/palettes/settings.css?raw";
 
 When it comes to CSS custom properites, SOL declares some sensible semantic names for design consistency. Think of them as aliases. (Whether this is helpful or not is yet to be determined.) 
 
 They attempt to address the following:  
 
-- Equal heights among input fields and buttons.
+- Equalize heights among input fields including buttons.
 - Reduce the recall on spacing sizes. 
 - Alleviate color contrast concerns pertaining to <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> standards. 
 
@@ -20,12 +18,10 @@ Any of these defaults can be over-written as desired by adding the custom proper
 
 ## General Settings
 
-<CodeComponent file={generalSettings} lang="css" summary="CSS" />
-
-## Color Controls
-
-<CodeComponent file={colorControls} lang="css" summary="CSS" />
+<CodeComponent openState file={generalSettings} lang="css" summary="CSS" />
 
 ## Color Settings
 
 <CodeComponent file={colorSettings} lang="css" summary="CSS" />
+
+[Read more about color](/docs/color)

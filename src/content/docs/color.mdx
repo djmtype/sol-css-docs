@@ -1,20 +1,34 @@
 ---
-title: "Colors"
-description: "Default colors"
+title: "Color"
+description: "SOL's color system"
 ---
+import colorControls from "/node_modules/sol-css/src/theme/palettes/controls.css?raw";
+
+import colorSettings from "/node_modules/sol-css/src/theme/palettes/settings.css?raw";
+
+## Overview 
 
 The color space used by SOL is [okLCH](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/oklch). Why okLCH? It's much easier to predict color contrast compared to using other color spaces like RGB or HSL. 
 
-SOL uses a concept of palettes, ~~brazenly borrowed~~ shamelessly stolen from [Open Props](https://open-props.style/) instead of commonly defined color swatches typically found in libraries like TailwindCSS. Thereby, theming is much simpler with a lot less CSS.
+## Color Schemes
+
+SOL supports light and dark mode by default. All colors are defined using the `light-dark()` notation. However, sometimes a project may only require a light scheme. Feel free to redefine the `--color-scheme` property.
+
+```css
+:root {
+  --color-scheme: light dark;
+}
+```
+
+## Color Palettes
+
+SOL uses a concept of palettes, ~~brazenly borrowed~~ shamelessly stolen from [Open Props](https://open-props.style/) instead of commonly defined color swatches typically found in libraries like TailwindCSS. Thereby, theming is much simpler with less CSS.
 
 More info:  
 [Open Props v2 Color Guide](https://opv2-beta.netlify.app/color/)  
 [Open Props oklch Palettes Beta](https://nerdy.dev/open-props-oklch-palettes-beta)
 
-
-## Color Palettes
-
-SOL includes 4 color palettes: 
+SOL provides 4 color palettes: 
 
 ```css
 --color-primary-{1-16}  
@@ -93,20 +107,20 @@ A <mark>highlighted</mark> word
 
 ---
 
+## Color Controls 
+
+SOL's default color palette settings. 
+
+<CodeComponent openState file={colorControls} lang="css" summary="CSS" />
+
+---
+
+## Semantic Color Properties
+
+SOL ships with some semantic color properties. 
+
+<CodeComponent openState file={colorSettings} lang="css" summary="CSS" />
+
+---
+
 <ColorPalette />
-
-## File Reference
-
-```
-sol-css/
-    └── src/
-        └── theme/
-            ├── palettes/
-            │   ├── controls.css
-            │   ├── hues.css
-            │   ├── palette.gray.css
-            │   ├── palette.primary.css
-            │   ├── palette.secondary.css
-            │   └── palette.utility.css
-            └── color.css
-```
