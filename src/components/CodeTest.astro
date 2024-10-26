@@ -1,0 +1,13 @@
+---
+import { Code } from "astro/components";
+// import importedCode from '@/components/Details.astro?raw';
+const syntax = await Astro.slots.render("default");
+
+type Props = {
+  html?: any
+}
+
+const { html } = Astro.props
+---
+
+<Code code={syntax} lang="html" title="details" wrap />

@@ -13,24 +13,27 @@ Honestly, I can't think of a good reason *for* or *against*. There might be bett
 
 ## Overview
 
-SOL comes in 3 compiled flavors. They were compiled using the ["defaults" browserslist configuration](https://browsersl.ist/#q=defaults). 
+SOL comes in 3 compiled flavors. They were compiled using the [Browserslist's "defaults"](https://browsersl.ist/#q=defaults) setting. 
 
 For more flexibility, choose [the installation package](#install-the-package) instead.
 
 Choose your own adventure.
 
 ### Reset
-A compilation of primitive styles from other resets like Andy Bell and Open Props. All rules are defined within `:where()` for easy overrides.  
+
+A compilation of primitive styles from other *resets* in the wild. All rules are defined within `:where()` for easy overrides.  
 
 ### Core
-Builds upon the reset, plus includes a theme layer for colors, typography, spacing, and light/dark schemes all defined by custom properties. 
+
+Builds upon the **Reset**, plus includes a theme layer for colors, typography, spacing, and light/dark schemes defined by custom properties. 
 
 ### Complete
-Includes the core foundation plus styles for most browser-shipped HTML elements like forms, dialog, details/summary, progress, and table.
+
+Includes the **Core** foundation plus styles for many browser-shipped HTML elements like form fields and inputs, dialog, details/summary, progress, and table.
 
 ## Usage
 
-The usage instructions apply to the **Complete** package, but the same rules can be applied for adding the **Reset** or **Core** instead. 
+The usage instructions apply to the **Complete** package, but the same rules apply for adding the **Reset** or **Core** instead. 
 
 Choose one of the options below.
 
@@ -70,10 +73,4 @@ npm install github:djmtype/sol-css#main
 /* OR */
 /* @import "node_modules/sol-css/sol.css" */
 ```
-
-#### Reference the Compiled Version
-
-```css
-@import "sol-css/build/sol.css";
-```  
 

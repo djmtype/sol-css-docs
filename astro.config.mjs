@@ -13,23 +13,7 @@ export default defineConfig({
     
     AutoImport({
       imports: [
-        "./src/components/CodeComponent.astro",
-        "./src/components/Details.astro",
-        "./src/components/Buttons.astro",
-        "./src/components/Dialog.astro",
-        "./src/components/Images.astro",
-        "./src/components/Table.astro",
-        "./src/components/TableScroll.astro",
-        "./src/components/Forms.astro",
-        "./src/components/FormsInput.astro",
-        "./src/components/Progress.astro",
-        "./src/components/Spacing.astro",
-        "./src/components/Headings.astro",
-        "./src/components/Lists.astro",
-        "./src/components/InlineText.astro",
-        "./src/components/Blockquote.astro",
-        "./src/components/Typescale.astro",
-        "./src/components/Docs/ColorPalette.astro",
+        "./src/components/CodeComponent.astro"
       ],
     }),
     mdx({

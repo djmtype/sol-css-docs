@@ -3,12 +3,18 @@ title: "Typography"
 description: "Documentation for typographical elements including typescale, headings, lists, inline elements, and blockquote."
 ---
 import HeadingsScript from "@/components/HeadingsScript.astro";
+import Headings from "@/components/Headings.astro?raw";
+import Typescale from "@/components/Typescale.astro";
+import Blockquote from "@/components/Blockquote.astro?raw";
+import Lists from "@/components/Lists.astro?raw";
+import InlineText from "@/components/InlineText.astro?raw";
+import ColorPalette from "@/components/Docs/ColorPalette.astro";
 
 ## Overview
 
 ### Font Size
 
-The default font size utilizes a `clamp` function for better readability. Its ideal value is based on a ~1440px viewport.
+The default font size utilizes a `clamp()` function for better readability. Its ideal value is based on a ~1440px viewport.
 
 ```css
 :where(html) {
@@ -41,28 +47,20 @@ Font size properties are defined using `--font-size-{00-6}`.
 
 ### Headings
 
-<CodeComponent lineWrap class="flow">
-  <Headings />
-</CodeComponent>
+<CodeComponent code={Headings} wrap class="flow" style={{ padding: "var(--spacing-panel)", border: "var(--border-width-hairline) solid var(--color-separator)", borderRadius: "var(--radius-panel)" }} />
 <HeadingsScript />
 
 ### Lists
 
 #### Unordered, Ordered, Definition
 
-<CodeComponent lineWrap style={{display: 'grid', gap: 'var(--spacing-sibling) var(--spacing-gutter)', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 20ch), 1fr))', alignItems: 'baseline', justifyItems: 'start'}}>
-  <Lists />
-</CodeComponent>
+<CodeComponent code={Lists} wrap style={{display: 'grid', gap: 'var(--spacing-sibling) var(--spacing-gutter)', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 20ch), 1fr))', alignItems: 'baseline', justifyItems: 'start'}} />
 
 ### Inline Text Elements
 
-<CodeComponent lineWrap style={{display: 'grid', gap: 'var(--spacing-sibling) var(--spacing-gutter)', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 20ch), 1fr))', alignItems: 'baseline', justifyItems: 'start'}}>
-  <InlineText />
-</CodeComponent>
+<CodeComponent code={InlineText} wrap style={{display: 'grid', gap: 'var(--spacing-sm) var(--spacing-gutter)', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 20ch), 1fr))', alignItems: 'baseline', justifyItems: 'start'}} />
 
 ### Blockquote
 
-<CodeComponent lineWrap>
-  <Blockquote />
-</CodeComponent>
+<CodeComponent code={Blockquote} wrap />
 

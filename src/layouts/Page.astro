@@ -1,32 +1,29 @@
 ---
 // import 'sol-css/src/sol.css'
 import "@/styles/main.css"
-import type { MarkdownHeading } from "astro"
-import type { CollectionEntry } from "astro:content"
 
+import type { MarkdownLayoutProps } from 'astro';
 
 import BaseHead from "@/components/Base/Head.astro"
 import SkipLink from "@/components/Base/SkipLink.astro"
 import BaseHeader from "@/components/Base/Header.astro"
 
 
-type CollectionProps = CollectionEntry<"docs">["data"] & {
-  headings?: MarkdownHeading[]
-  title: string
-  description: string
-}
+type MarkdownProps = MarkdownLayoutProps<{
+  title: string;
+  description: string;
+}>
 
-
-type Props = CollectionProps;
+type Props = MarkdownProps;
 
 const currentPage = Astro.url.pathname
-const { title, description, headings, ...data } = Astro.props
+const { frontmatter } = Astro.props
 const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 ---
 
 <html dir='ltr' lang='en-us'>
   <head>
-    <BaseHead title={title ? title : "SOL | CSS without the FUSS"} description={description ? description : "A drop-in classless style library"} canonicalUrl={canonicalURL} {...data} />
+    <BaseHead title={frontmatter && frontmatter.title || "Default Title"} description={frontmatter && frontmatter.description || "Default Description"} canonicalUrl={canonicalURL} />
   </head>
 
   <body>

@@ -2,27 +2,47 @@
 title: "Color"
 description: "SOL's color system"
 ---
-import colorControls from "/node_modules/sol-css/src/theme/palettes/controls.css?raw";
+import Hues from "@/components/Docs/Hues.astro";
+import Swatches from "@/components/Docs/Swatches.astro";
 
-import colorSettings from "/node_modules/sol-css/src/theme/palettes/settings.css?raw";
+import colorSettings from "/node_modules/sol-css/src/theme/palettes/settings.css";
 
 ## Overview 
 
-The color space used by SOL is [okLCH](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/oklch). Why okLCH? It's much easier to predict color contrast compared to using other color spaces like RGB or HSL. 
+The color space used by SOL is [okLCH](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/oklch). Why okLCH? Color contrast becomes easier to predict compared to other color spaces like RGB or HSL. 
 
 ## Color Schemes
 
-SOL supports light and dark mode by default. All colors are defined using the `light-dark()` notation. However, sometimes a project may only require a light scheme. Feel free to redefine the `--color-scheme` property.
+SOL supports light and dark schemes by default. 
+
+LightningCSS requires `color-scheme` to be well-defined in order to transform `light-dark()` values for unsupported browsers. 
 
 ```css
-:root {
-  --color-scheme: light dark;
+:where(html) {
+  color-scheme: light dark;
 }
 ```
 
+To avoid any flash of unstyling, add the following `<meta>` to your `<head>`: 
+
+```html
+<meta name="color-scheme" content="light dark" />
+```
+
+However, sometimes a project may only require a single scheme. 
+
+By example, overwrite the color scheme value without a dark mode.
+
+```css
+html {
+  color-scheme: unset; /* `unset`, `initial` or `light` */
+}
+```
+
+
 ## Color Palettes
 
-SOL uses a concept of palettes, ~~brazenly borrowed~~ shamelessly stolen from [Open Props](https://open-props.style/) instead of commonly defined color swatches typically found in libraries like TailwindCSS. Thereby, theming is much simpler with less CSS.
+SOL uses palettes, ~~brazenly borrowed~~ shamelessly stolen from [Open Props](https://open-props.style/). Thereby, theming should be simpler? At least, less CSS.
 
 More info:  
 [Open Props v2 Color Guide](https://opv2-beta.netlify.app/color/)  
@@ -46,7 +66,7 @@ SOL provides 4 color palettes:
 
 ### Primary Color Palette
 
-[View primary color swatches](#color-palette-primary)
+[View primary color swatches](#color-palette-primary)  
 
 Override the default primary hue with any pre-defined `--hue-*` values, or use a number: 
 
@@ -58,6 +78,16 @@ Override the default primary hue with any pre-defined `--hue-*` values, or use a
 ```
 
 [See all hue options](#hue-options)
+
+#### Primary Palette Configuration
+
+```css
+:root {
+  --primary-hue: var(--hue-indigo);
+  --primary-hue-rotation: 0;
+  --primary-chroma: 1;
+}
+```
 
 ### Secondary Color Palette
 
@@ -72,18 +102,32 @@ Similar to setting the primary hue, to override the default secondary hue, use a
 */
 ```
 
+[See all hue options](#hue-options)
+
+#### Secondary Palette Configuration
+
+```css
+:root {
+  --secondary-hue: var(--hue-pink);
+  --secondary-hue-rotation: 0;
+  --secondary-chroma: 1;
+}
+```
+
 ### Gray Color Palette
 
 [View gray color swatches](#color-palette-gray)
 
 By default, the gray palette tone is influenced by the `--primary-hue` by `0.1` of chroma which gives the neutral scheme a subtle hint of primary color. However, any of these settings can be changed.
 
-The default gray palette settings: 
+#### Gray Palette Configuration 
 
 ```css
---gray-hue: var(--primary-hue)
---gray-hue-rotation: 0
---gray-chroma: 0.1
+:root {
+  --gray-hue: var(--primary-hue);
+  --gray-hue-rotation: 0;
+  --gray-chroma: 0.1;
+}
 ```
 
 ### Utility Colors 
@@ -92,7 +136,7 @@ Utility colors serve a specific purpose; not meant for branding. For example, a 
 
 To use a specific utility color, define the `--utility-hue` first. Then specify a number from the `--color-utility-*` scale.
 
-#### CSS Example: 
+#### CSS Example 
 
 ```css
 mark {
@@ -101,26 +145,27 @@ mark {
 }
 ```
 
-#### HTML Ouput: 
+#### HTML Ouput 
 
 A <mark>highlighted</mark> word
 
 ---
 
-## Color Controls 
+## Hue Options
+<Hues />
 
-SOL's default color palette settings. 
+---
 
-<CodeComponent openState file={colorControls} lang="css" summary="CSS" />
+## Color Swatches
+<Swatches />
 
 ---
 
 ## Semantic Color Properties
 
-SOL ships with some semantic color properties. 
+SOL ships with some semantic color properties. All colors are defined using the `light-dark()` notation. 
 
-<CodeComponent openState file={colorSettings} lang="css" summary="CSS" />
+<CodeComponent file={colorSettings} lang="css" summary="CSS" />
 
----
+Note, any pre-compiled version of SOL compiles this syntax down for older browser support using [Browserslist's "defaults"](https://browsersl.ist/#q=defaults). 
 
-<ColorPalette />

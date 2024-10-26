@@ -65,7 +65,7 @@ const { Content, headings } = await render(entry)
 
 <style is:global>
   .prose {
-    --_flow: var(--spacing-flow);
+    --_flow: 1.5em;
   }
   .prose > * + * {
     margin-block-start: var(--_flow);
@@ -93,5 +93,12 @@ const { Content, headings } = await render(entry)
     color: var(--color-ink-primary);
     font-weight: 600;
 
+  }
+
+  .prose [data-footnotes] {
+    --_flow: var(--spacing-2xl);
+    font-size: var(--font-size-00);
+    border-block-start: var(--border-width-hairline) solid var(--color-separator);
+    padding-block-start: var(--spacing-gutter);
   }
 </style>

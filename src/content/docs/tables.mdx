@@ -2,17 +2,15 @@
 title: "Tables"
 description: "A tables element"
 ---
+import Table from "@/components/Table.astro?raw";
+import TableScroll from "@/components/TableScroll.astro?raw";
 
 ## Table (Default)
 
-<CodeComponent lineWrap>
-<Table />
-</CodeComponent> 
+<CodeComponent wrap code={Table} />
 
 ## Table (Overflow)
 
 Wrap a `<table>` within a `<figure>` for overflow scrolling.
 
-<CodeComponent lineWrap>
-<TableScroll />
-</CodeComponent> 
+<CodeComponent wrap code={TableScroll} />
