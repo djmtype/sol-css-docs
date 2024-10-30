@@ -4,7 +4,9 @@ body {
 }
 
 body > header {
-  background-color: var(--color-surface-bright);
+
+  inline-size: 100%;
+  /* backdrop-filter: blur(10px); */
 }
 
 body > header > div {
@@ -20,6 +22,17 @@ body > header > div {
   );
 }
 
+body > header > div > a {
+  flex: 0 0 max-content;
+  text-align: center;
+
+
+}
+
+body > header nav {
+  flex: 0 1 max-content;
+}
+
 body > header nav > ul {
   display: flex;
 }
@@ -27,74 +40,6 @@ body > header nav > ul {
 body > header nav > ul a {
   padding: var(--spacing-input-block) var(--spacing-input-inline);
   display: flex;
-}
-
-main:has(> aside) {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: var(--spacing-gutter);
-  padding-block: var(--spacing-gutter);
-
-  margin-inline: auto;
-  inline-size: min(
-    min(var(--breakpoint-lg), 100%),
-    calc(100% - (var(--spacing-gutter) * 2))
-  );
-
-  @media (width > 60rem) {
-    padding-block: var(--spacing-2xl);
-    grid-template-columns: minmax(min(100%, 20ch), 0.5fr) minmax(
-        min(50vw, 30ch),
-        1.25fr
-      );
-  }
-}
-
-main > aside {
-  @media (width > 60rem) {
-    align-self: start;
-    position: sticky;
-    top: var(--spacing-gutter);
-    z-index: 1;
-  }
-}
-
-main > aside nav {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-xs);
-}
-
-main > aside nav a {
-  display: flex;
-  padding: 0;
-}
-
-main > aside nav ul {
-  display: flex;
-  flex-wrap: wrap;
-  column-gap: var(--spacing-sibling);
-    > * {
-      flex: 0 1 15ch;
-    }
-}
-
-main > aside nav details > summary:not([role="button"]) {
-  color: var(--color-ink-muted);
-  border: unset;
-  &:hover,
-  &:focus-visible {
-    color: revert;
-  }
-
-  & + div {
-    border: unset;
-  }
-}
-
-main > aside nav details[open] > summary:not([role="button"]) {
-  color: unset;
-
 }
 
 
@@ -106,9 +51,12 @@ main > aside nav details[open] > summary:not([role="button"]) {
 }
 
 
+
+
 footer#colophon {
-  background: black;
+  background: var(--color-surface-dim);
   padding: var(--spacing-gutter);
   text-align: center;
+  margin-block-start: auto;
   margin-block-end: 0;
 }

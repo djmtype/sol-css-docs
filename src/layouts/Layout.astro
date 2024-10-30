@@ -43,6 +43,24 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site)
   </body>
 </html>
 
+<script is:inline>
+  // Wait for the DOM content to be fully loaded
+document.addEventListener("DOMContentLoaded", () => {
+  // Get the header element
+  const header = document.querySelector("body > header");
+
+  if (header) {
+    // Get the height of the header element
+    const headerHeight = header.offsetHeight;
+
+    // Set the CSS custom property --header-height to the header height in pixels
+    document.documentElement.style.setProperty("--header-height", `${headerHeight}px`);
+  }
+});
+
+</script>
+
+
 <!-- <script is:inline>  
   const theme = (() => {    
     if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {      

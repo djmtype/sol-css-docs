@@ -1,6 +1,9 @@
 ---
 import Layout from "@/layouts/Layout.astro"
+import LogoAlpha from "@/components/Base/LogoAlpha.astro"
 import { getCollection } from "astro:content"
+import { Code } from "astro/components"
+import Topographic from "@/components/Base/Topographic.astro"
 
 const title = "Welcome"
 const description = "A classless CSS library"
@@ -9,19 +12,72 @@ const nav = await getCollection("docsNavigation")
 ---
 
 <Layout title={title} description={description}>
+  <Topographic />
+  <section id="section-1">
+    <header>
+      <hgroup>
+        <LogoAlpha style={{ justifySelf: "center" }} />
 
-  <ul>
+        <p style="font-size: var(--font-size-1); color: var(--color-ink-muted)"><em>CSS without the FUSS</em></p>
+      </hgroup>
+    </header>
+    <div role="group"><a href="/docs" role="button">Get Started</a> <a href="/docs#usage">Using SOL</a></div>
+  </section>
 
-  </ul>
-    <article>
-      <header>
-        <hgroup>
-          <h1>SOL</h1>
-
-          <p><em>CSS without the FUSS</em></p>
-        </hgroup>
-      </header>
-      <p><a href='#0' role='button'>Get Started</a> <a href='#0'>Download</a></p>
-    </article>
-
+  <section id="section-2">
+    <h2>Section</h2>
+  </section>
 </Layout>
+
+<style>
+  :global(main) {
+    flex: 1;
+    display: grid;
+    place-items: center;
+  }
+
+
+
+  #section-1 {
+    inline-size: calc(100% - (var(--spacing-gutter) * 2));
+
+    background: radial-gradient(closest-side, var(--color-surface) 25%, color-mix(in oklch, var(--color-accent), transparent 100%) 99%);
+    display: grid;
+    place-content: center;
+    gap: var(--spacing-2xl);
+    grid-template-columns: minmax(0, 1fr);
+    align-self: center;
+    margin: auto;
+    text-align: center;
+    /* inline-size: min(min(var(--breakpoint-lg), 100%), calc(100% - (var(--spacing-gutter) * 2))); */
+  }
+
+  #section-1 {
+    min-height: calc(100svh - var(--header-height, 0));
+    position: sticky;
+    top: 0;
+  }
+
+  #section-2 {
+    min-height: 100svh;
+    width: 100%;
+    background: var(--color-surface-bright);
+    z-index: 2;
+  }
+
+  [role="group"] {
+    display: flex;
+    gap: var(--spacing-xs);
+    place-content: center;
+    place-items: center;
+  }
+
+  /* :global(footer) {
+    position: fixed;
+    bottom: var(--spacing-gutter);
+    left: var(--spacing-gutter);
+    width: calc(100% - var(--spacing-gutter) * 2);
+    z-index: 1;
+    margin-top: calc(var(--spacing-gutter) * 2);
+  } */
+</style>

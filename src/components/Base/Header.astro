@@ -1,5 +1,6 @@
 ---
 import MainNav from "@/components/Base/MainNav.astro"
+import Logo from "@/components/Base/Logo.astro"
 
 type Props = {
   currentPage: string
@@ -10,7 +11,10 @@ const { currentPage } = Astro.props
 
 <header>
   <div>
-    <p style="font-size: var(--font-size-1)"><strong>SOL</strong> CSS</p>
+    <a href="/">
+    <Logo style={{ blockSize: '2rem', inlineSize: 'auto' }} />
+    <span class="sr-only">SOL CSS</span>
+    </a>
     <MainNav currentPage={currentPage} />
   </div>
 </header>
