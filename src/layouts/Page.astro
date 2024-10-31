@@ -9,12 +9,13 @@ import SkipLink from "@/components/Base/SkipLink.astro"
 import BaseHeader from "@/components/Base/Header.astro"
 
 
-type MarkdownProps = MarkdownLayoutProps<{
+type Props = MarkdownLayoutProps<{
   title: string;
   description: string;
+  // category: string;
 }>
 
-type Props = MarkdownProps;
+
 
 const currentPage = Astro.url.pathname
 const { frontmatter } = Astro.props
@@ -23,7 +24,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 
 <html dir='ltr' lang='en-us'>
   <head>
-    <BaseHead title={frontmatter && frontmatter.title || "Default Title"} description={frontmatter && frontmatter.description || "Default Description"} canonicalUrl={canonicalURL} />
+    <BaseHead title={frontmatter && frontmatter.title || "Default Title"} description={frontmatter && frontmatter.description || "Default Description"} canonicalUrl={canonicalURL} category="" />
   </head>
 
   <body>

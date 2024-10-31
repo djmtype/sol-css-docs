@@ -10,7 +10,7 @@ const docs = defineCollection({
     title: z.string().default(SITE.title),
     description: z.string().default(SITE.description),
     order: z.number().optional(),
-    category: z.string(),
+    category: z.string().default('components'),
     draft: z.boolean().optional(),
     image: z
       .object({

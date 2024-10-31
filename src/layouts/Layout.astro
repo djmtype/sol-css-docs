@@ -17,7 +17,16 @@ type CollectionProps = CollectionEntry<"docs">["data"] & {
 }
 
 
+
+
+// type DocsProps = CollectionProps & { category: string };
+
 type Props = CollectionProps;
+
+
+
+
+
 
 const currentPage = Astro.url.pathname
 const { title, description, headings, ...data } = Astro.props
