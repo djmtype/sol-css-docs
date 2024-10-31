@@ -9,6 +9,8 @@ const docs = defineCollection({
 	schema: z.object({
 		title: z.string().default(SITE.title),
 		description: z.string().default(SITE.description),
+		order: z.number().optional(),
+		category: z.string(),
 		image: z
 			.object({
 				src: z.string(),

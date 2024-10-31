@@ -1,0 +1,79 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content"
+
+type Props = CollectionEntry<"docs">
+
+const docsCollection = await getCollection("docs")
+
+// Define the manual order of categories (optional)
+const categoryOrder: string[] = ["getting-started", "elements", "components"]
+
+
+
+const mappedDocs = docsCollection.map((entry) => ({
+   ...entry.data,
+  // title: entry.data.title,
+  // description: entry.data.description,
+  // order: entry.data.order,
+  // category: entry.data.category,
+
+  collection: entry.collection,
+  slug: entry.id,
+  
+  // props: entry, // This line was likely unused, removing for clarity
+}))
+
+
+// Group documents by category
+const navData = mappedDocs.reduce(
+  (acc, entry) => {
+    const { category } = entry
+    if (!acc[category]) acc[category] = []
+    acc[category].push(entry)
+    return acc
+  },
+  {} as Record<string, typeof mappedDocs>,
+)
+
+// Sort each category's items by 'order', defaulting to `0` for undefined
+for (const category in navData) {
+  navData[category].sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
+}
+
+// Sort categories based on the predefined order (if provided)
+const sortedNavData: [string, typeof mappedDocs][] = categoryOrder
+  ? categoryOrder.map((category) => [category, navData[category] || []])
+  : Object.entries(navData) // Use Object.entries for default behavior
+
+// Get the current URL path
+const currentPage = new URL(Astro.request.url).pathname
+// const currentPage = Astro.url.pathname
+
+// Helper function to check if any item in a category has aria-current="page"
+
+const isCategoryOpen = (items: Props[]): boolean => items.some((item) => `/${item.collection}/${item.slug}` === currentPage)
+---
+
+<nav aria-label="Documentation Navigation">
+  {
+    sortedNavData.map(
+      ([category, items]) =>
+        items.length > 0 && (
+          <details open={isCategoryOpen(items)}>
+            <summary>{category.replace("-", " ").toUpperCase()}</summary>
+            <div>
+              <ul role="list">
+                {items.map((item) => (
+                  <li data-item={category}>
+                    <a href={`/${item.collection}/${item.slug}`} aria-current={currentPage === `/${item.collection}/${item.slug}` ? "page" : undefined}>
+                      {item.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </details>
+        )
+    )
+  }
+</nav>

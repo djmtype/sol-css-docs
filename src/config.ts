@@ -23,22 +23,22 @@ export type DocsNav = Record<string, { text: string; link: string }[]>
 
 export const DOCS_NAV: DocsNav = {
   "Getting Started": [
-    { text: "Intro", link: "docs/intro" },
-    { text: "Settings", link: "docs/settings" }
+    { text: "Intro", link: "docs/getting-started/intro" },
+    { text: "Settings", link: "docs/getting-started/settings" }
   ],
   Elements: [
-    { text: "Color", link: "docs/color" },
-    { text: "Spacing", link: "docs/spacing" },
-     { text: "Typography", link: "docs/typography" },
+    { text: "Color", link: "docs/elements/color" },
+    { text: "Spacing", link: "docs/elements/spacing" },
+     { text: "Typography", link: "docs/elements/typography" },
   ],
   Components: [
-    { text: "Buttons", link: "docs/buttons" },
-    { text: "Details", link: "docs/details" },
-    { text: "Dialog", link: "docs/dialog" },
-    { text: "Images", link: "docs/images" },
-    { text: "Forms", link: "docs/forms" },
-    { text: "Progress", link: "docs/progress" },
-    { text: "Tables", link: "docs/tables" },
+    { text: "Buttons", link: "docs/components/buttons" },
+    { text: "Details", link: "docs/components/details" },
+    { text: "Dialog", link: "docs/components/dialog" },
+    { text: "Images", link: "docs/components/images" },
+    { text: "Forms", link: "docs/components/forms" },
+    { text: "Progress", link: "docs/components/progress" },
+    { text: "Tables", link: "docs/components/tables" },
   ],
 };
 
@@ -49,7 +49,7 @@ export type MainNav = Record<string, { text: string; link: string }[]>
 export const MAIN_NAV: MainNav = {
     "Main Navigation": [
       { text: "Home", link: "" },
-      { text: "Docs", link: "docs/intro" },
+      { text: "Docs", link: "docs/getting-started/intro" },
       // { text: "Demo", link: "blog" },
     ],
 };

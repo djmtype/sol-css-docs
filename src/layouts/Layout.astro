@@ -58,6 +58,42 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+
+// Function to calculate the greatest common divisor (GCD)
+function gcd(a, b) {
+    return b === 0 ? a : gcd(b, a % b);
+}
+
+// Function to update the aspect ratio CSS custom property
+function updateAspectRatio() {
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    // Calculate the GCD to simplify the ratio
+    const divisor = gcd(width, height);
+    const aspectRatioWidth = width / divisor;
+    const aspectRatioHeight = height / divisor;
+
+    // Create the aspect ratio string in the format 'width/height'
+    const aspectRatio = `${aspectRatioWidth}/${aspectRatioHeight}`;
+
+    // Set the aspect ratio as a CSS custom property
+    document.documentElement.style.setProperty('--aspect-ratio', aspectRatio);
+}
+
+// Create a ResizeObserver to watch for window size changes
+const resizeObserver = new ResizeObserver(() => {
+    updateAspectRatio();
+});
+
+// Observe the document's root element (or any other element you want)
+resizeObserver.observe(document.documentElement);
+
+// Initial call to set the aspect ratio on page load
+updateAspectRatio();
+
+
+
 </script>
 
 
