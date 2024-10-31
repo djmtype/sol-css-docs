@@ -1,26 +1,25 @@
-import { glob, file } from 'astro/loaders';
-import { z, defineCollection } from 'astro:content';
+import { glob, file } from "astro/loaders";
+import { z, defineCollection } from "astro:content";
 
-import { SITE } from '@/config';
+import { SITE } from "@/config";
 
 const docs = defineCollection({
-	// type: 'content',
-	loader: glob({ pattern: "**/*.{md,mdx}", base: "src/content/docs" }),
-	schema: z.object({
-		title: z.string().default(SITE.title),
-		description: z.string().default(SITE.description),
-		order: z.number().optional(),
-		category: z.string(),
-		image: z
-			.object({
-				src: z.string(),
-				alt: z.string(),
-			})
-			.optional(),
-	}),
+  // type: 'content',
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "src/content/docs" }),
+  schema: z.object({
+    title: z.string().default(SITE.title),
+    description: z.string().default(SITE.description),
+    order: z.number().optional(),
+    category: z.string(),
+    draft: z.boolean().optional(),
+    image: z
+      .object({
+        src: z.string(),
+        alt: z.string(),
+      })
+      .optional(),
+  }),
 });
-
-
 
 const docsNavigation = defineCollection({
   loader: file("src/data/docsNavigation.json"),
@@ -31,15 +30,13 @@ const docsNavigation = defineCollection({
       z.object({
         label: z.string(),
         path: z.string(),
-      })
-    )
-  })
+      }),
+    ),
+  }),
 });
 
-
-
 // const blog = defineCollection({
-	
+
 //   schema: z.object({
 // 		permalink: z.string().optional(),
 //     title: z.string().max(100),
@@ -56,8 +53,7 @@ const docsNavigation = defineCollection({
 //   })
 // });
 
-
 export const collections = {
-  'docs': docs,
-	'docsNavigation': docsNavigation
+  docs: docs,
+  docsNavigation: docsNavigation,
 };
