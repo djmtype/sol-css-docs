@@ -54,6 +54,7 @@ body > header nav > ul a {
 
 
 footer#colophon {
+  color: var(--color-ink-muted);
   background: var(--color-surface-dim);
   padding: var(--spacing-gutter);
   text-align: center;

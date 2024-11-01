@@ -10,21 +10,15 @@ import SkipLink from "@/components/Base/SkipLink.astro"
 import BaseHeader from "@/components/Base/Header.astro"
 
 
-type CollectionProps = CollectionEntry<"docs">["data"] & {
+type PagesCollectionProps = CollectionEntry<"pages">["data"]
+type DocsCollectionProps = CollectionEntry<"docs">["data"]
+type BaseHeadProps = {
   headings?: MarkdownHeading[]
   title: string
-  description: string
+  description?: string
 }
 
-
-
-
-// type DocsProps = CollectionProps & { category: string };
-
-type Props = CollectionProps;
-
-
-
+type Props = (PagesCollectionProps | DocsCollectionProps) & BaseHeadProps;
 
 
 

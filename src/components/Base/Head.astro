@@ -2,20 +2,16 @@
 import type { CollectionEntry } from 'astro:content';
 import { SITE, OPEN_GRAPH } from '@/config';
 
-// type Props = { 
-//   canonicalUrl: URL;
-//   description?: string; 
-// } & CollectionEntry<'docs'>['data'];
 
 
-
-
-type CollectionProps = CollectionEntry<"docs">["data"] & {
+type PagesCollectionProps = CollectionEntry<"pages">["data"]
+type DocsCollectionProps = CollectionEntry<"docs">["data"]
+type BaseHeadProps = {
   canonicalUrl: URL;
   description?: string; 
-};
+}
 
-type Props = CollectionProps;
+type Props = (PagesCollectionProps | DocsCollectionProps) & BaseHeadProps;
 
 const { image, title, description, canonicalUrl } = Astro.props;
 const formattedContentTitle = `${title} 🚀 ${SITE.title}`;

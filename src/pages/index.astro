@@ -2,30 +2,24 @@
 import Layout from "@/layouts/Layout.astro"
 import LogoAlpha from "@/components/Base/LogoAlpha.astro"
 
-
 import Topographic from "@/components/Base/Topographic.astro"
 
 const title = "Welcome"
 const description = "A classless CSS library"
-
-
-
 ---
 
-<Layout title={title} description={description} category="">
+<Layout title={title} description={description}>
   <Topographic />
   <section id="section-1">
     <header>
       <hgroup>
         <LogoAlpha style={{ justifySelf: "center" }} />
 
-        <p style="font-size: var(--font-size-1); color: var(--color-ink-muted)"><em>CSS without the FUSS</em></p>
+        <p style={{ fontSize: "var(--font-size-1)", color: "var(--color-ink-muted)" }}><em>CSS without the FUSS</em></p>
       </hgroup>
     </header>
     <div role="group"><a href="/docs" role="button">Get Started</a> <a href="/docs#usage">Using SOL</a></div>
   </section>
-
-  
 </Layout>
 
 <style>
@@ -50,7 +44,7 @@ const description = "A classless CSS library"
   }
 
   #section-1 {
-    min-height: calc(100svh - var(--header-height, 0));
+    min-height: calc(100svh - var(--header-height, 70px));
     position: sticky;
     top: 0;
   }
@@ -73,19 +67,15 @@ const description = "A classless CSS library"
     display: grid;
     gap: var(--spacing-gutter);
     grid-template-columns: repeat(auto-fill, minmax(min(100%, 30ch), 1fr));
+  }
 
-}
-
-.contents-card {
-    display: grid; 
+  .contents-card {
+    display: grid;
     grid-template-rows: auto 1fr auto;
     background: var(--color-surface);
     min-block-size: 30svh;
     gap: var(--spacing-sm);
     position: relative;
-
-
-
 
     > h4 {
       color: var(--color-gray-1);
@@ -94,34 +84,29 @@ const description = "A classless CSS library"
       padding: var(--spacing-xs);
       /* padding-block-start: calc(var(--spacing-xs) + 2cqi); */
       align-self: baseline;
-
     }
     > p {
-        grid-row: 2; 
-        align-self: baseline;
-        padding-inline: var(--spacing-xs);
-        color: var(--color-ink-muted);
+      grid-row: 2;
+      align-self: baseline;
+      padding-inline: var(--spacing-xs);
+      color: var(--color-ink-muted);
     }
     > a {
-        grid-row: 3; 
-        margin-block-start: auto;
-        margin-block-end: 0;
-        padding: var(--spacing-xs);
-        position: static;
-        &::before {
-          content: "";
-          position: absolute;
-          width: 100%;
-          height: 100%;
-          inset: 0;
-          display: block;
-          z-index: 0;
-user-select: none;
-        }
+      grid-row: 3;
+      margin-block-start: auto;
+      margin-block-end: 0;
+      padding: var(--spacing-xs);
+      position: static;
+      &::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        inset: 0;
+        display: block;
+        z-index: 0;
+        user-select: none;
+      }
     }
-}
-
-
-
-
+  }
 </style>

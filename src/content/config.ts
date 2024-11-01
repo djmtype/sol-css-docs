@@ -21,6 +21,39 @@ const docs = defineCollection({
   }),
 });
 
+
+const pages = defineCollection({
+  // type: 'content',
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "src/content/pages" }),
+  schema: z.object({
+    title: z.string().default(SITE.title),
+    description: z.string().default(SITE.description),
+    order: z.number().optional(),
+    draft: z.boolean().optional(),
+    image: z
+      .object({
+        src: z.string(),
+        alt: z.string(),
+      })
+      .optional(),
+  }),
+});
+
+const mainNavigation = defineCollection({
+  loader: file("src/data/mainNavigation.json"),
+  schema: z.object({
+    id: z.string(),
+    name: z.string(),
+    links: z.array(
+      z.object({
+        label: z.string(),
+        url: z.string(),
+        external: z.boolean().optional()
+      }),
+    ),
+  }),
+});
+
 const docsNavigation = defineCollection({
   loader: file("src/data/docsNavigation.json"),
   schema: z.object({
@@ -55,5 +88,7 @@ const docsNavigation = defineCollection({
 
 export const collections = {
   docs: docs,
+  pages: pages,
+  mainNavigation: mainNavigation,
   docsNavigation: docsNavigation,
 };

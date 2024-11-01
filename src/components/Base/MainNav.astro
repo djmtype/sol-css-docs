@@ -1,32 +1,29 @@
 ---
-import { MAIN_NAV } from "@/config"
+import { type CollectionEntry, getCollection } from "astro:content";
 
 type Props = {
-  currentPage: string
-}
+  currentPage: string;
+};
 
-const { currentPage } = Astro.props
-const currentPageMatch = currentPage.endsWith("/") ? currentPage.slice(1, -1) : currentPage.slice(1)
-const mainNav = MAIN_NAV
+const { currentPage } = Astro.props;
+
+const mainNavigationData = await getCollection("mainNavigation");
+const mainNav = mainNavigationData[0]?.data;
 ---
 
-<nav aria-labelledby='primary-navigation' id="main-nav">
-  {
-    Object.entries(mainNav).map(([header, children]) => (
-    <h2 class="sr-only">{header}</h2>
-      <ul role='list'>
-        {children.map((child) => {
-          const url = Astro.site?.pathname + child.link
-          return (
-            <li>
-              <a href={url} aria-current={currentPageMatch === child.link ? "page" : false}>
-                {child.text}
-              </a>
-            </li>
-          )
-        })}
-      </ul>
-    ))
-  }
+<nav aria-labelledby={mainNav.id}>
+  <ul role="list">
+    {mainNav.links.map((link) => (
+      <li>
+        <a 
+          href={link.url}
+          target={link.external ? "_blank" : "_self"}
+          rel={link.external ? "noopener noreferrer" : undefined}
+          aria-current={currentPage === link.url ? "page" : undefined}
+        >
+          {link.label}
+        </a>
+      </li>
+    ))}
+  </ul>
 </nav>
-
