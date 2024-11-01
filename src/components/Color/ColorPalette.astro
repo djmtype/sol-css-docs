@@ -100,7 +100,7 @@ const toCapitals = (str: string): string => {
       <div>
         <h3 id={`color-palette-${color}`}>{toCapitals(color)}</h3>
         <ul role='list'>
-          {items.map(({ name, value }) => (
+          {items.map(({ name }) => (
             <li>
               <item style={`--swatch-color: var(--${name})`} />
               <small>

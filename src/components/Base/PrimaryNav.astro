@@ -1,5 +1,5 @@
 ---
-import { type CollectionEntry, getCollection } from "astro:content";
+import { getEntry } from "astro:content";
 
 type Props = {
   currentPage: string;
@@ -7,13 +7,15 @@ type Props = {
 
 const { currentPage } = Astro.props;
 
-const mainNavigationData = await getCollection("mainNavigation");
-const mainNav = mainNavigationData[0]?.data;
+const navPrimaryData = await getEntry("navPrimary", "primary-navigation");
+
+const navPrimary = navPrimaryData.data
+
 ---
 
-<nav aria-labelledby={mainNav.id}>
+<nav aria-labelledby={navPrimary.name} id={navPrimary.id}>
   <ul role="list">
-    {mainNav.links.map((link) => (
+    {navPrimary.links.map((link) => (
       <li>
         <a 
           href={link.url}
@@ -27,3 +29,5 @@ const mainNav = mainNavigationData[0]?.data;
     ))}
   </ul>
 </nav>
+
+

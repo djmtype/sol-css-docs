@@ -39,8 +39,8 @@ const pages = defineCollection({
   }),
 });
 
-const mainNavigation = defineCollection({
-  loader: file("src/data/mainNavigation.json"),
+const navPrimary = defineCollection({
+  loader: file("src/data/navPrimary.json"),
   schema: z.object({
     id: z.string(),
     name: z.string(),
@@ -54,19 +54,32 @@ const mainNavigation = defineCollection({
   }),
 });
 
-const docsNavigation = defineCollection({
-  loader: file("src/data/docsNavigation.json"),
+const siteConfig = defineCollection({
+  loader: file("src/data/config.json"),
   schema: z.object({
     id: z.string(),
     name: z.string(),
-    links: z.array(
+    settings: z.array(
       z.object({
-        label: z.string(),
-        path: z.string(),
-      }),
+        title: z.string(),
+        description: z.string(),
+        defaultLanguage: z.string(),
+        url: z.string().url(),
+        analyticsId: z.string().optional(),
+      })
     ),
-  }),
+    openGraph: z.array(
+      z.object({
+        image: z.object({
+          src: z.string().url(),
+          alt: z.string(),
+        }),
+      })
+    ),
+  })
 });
+
+
 
 // const blog = defineCollection({
 
@@ -87,8 +100,8 @@ const docsNavigation = defineCollection({
 // });
 
 export const collections = {
-  docs: docs,
-  pages: pages,
-  mainNavigation: mainNavigation,
-  docsNavigation: docsNavigation,
+  siteConfig,
+  docs,
+  pages,
+  navPrimary
 };

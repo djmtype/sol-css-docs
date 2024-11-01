@@ -1,0 +1,23 @@
+[
+  {
+    "id": "config-site",
+    "name": "site",
+    "settings": [
+      {
+        "title": "SOL CSS",
+        "description": "CSS without the FUSS",
+        "defaultLanguage": "en-us",
+        "url": "https://cssol.netlify.app/",
+        "analyticsId": "G-xxx"
+      }
+    ],
+    "openGraph": [
+      {
+        "image": {
+          "src": "https://github.com/withastro/astro/blob/main/.github/assets/banner.png?raw=true",
+          "alt": "astro logo on a starry expanse of space, with a purple saturn-like planet floating in the right foreground"
+        }
+      }
+    ]
+  }
+]

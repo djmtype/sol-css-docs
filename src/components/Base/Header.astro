@@ -1,5 +1,5 @@
 ---
-import MainNav from "@/components/Base/MainNav.astro"
+import PrimaryNav from "@/components/Base/PrimaryNav.astro"
 import Logo from "@/components/Base/Logo.astro"
 
 type Props = {
@@ -15,6 +15,6 @@ const { currentPage } = Astro.props
     <Logo style={{ blockSize: '2rem', inlineSize: 'auto' }} />
     <span class="sr-only">SOL CSS</span>
     </a>
-    <MainNav currentPage={currentPage} />
+    <PrimaryNav currentPage={currentPage} />
   </div>
 </header>

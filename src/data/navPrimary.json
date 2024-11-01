@@ -1,7 +1,7 @@
 [
   {
-    "id": "main-navigation",
-    "name": "Main Navigation",
+    "id": "primary-navigation",
+    "name": "Primary Navigation",
     "links": [
       {
         "label": "Home",
@@ -9,7 +9,7 @@
       },
       {
         "label": "Docs",
-        "url": "docs/getting-started/intro"
+        "url": "/docs/getting-started/intro"
       },
       {
         "label": "Github",

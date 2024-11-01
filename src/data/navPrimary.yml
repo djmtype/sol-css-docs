@@ -1,0 +1,10 @@
+- id: "primary-navigation"
+  name: "Primary Navigation"
+  links:
+    - label: "Home"
+      url: "/"
+    - label: "Docs"
+      url: "/docs/getting-started/intro"
+    - label: "Github"
+      url: "https://github.com"
+      external: true

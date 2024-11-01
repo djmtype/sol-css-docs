@@ -44,9 +44,6 @@ const extractCssVariables = (cssStyles: string) => {
 }
 
 // Read the CSS files
-const primaryCss = fs.readFileSync("./node_modules/sol-css/src/theme/palettes/palette.primary.css", "utf8")
-const secondaryCss = fs.readFileSync("./node_modules/sol-css/src/theme/palettes/palette.secondary.css", "utf8")
-const grayCss = fs.readFileSync("./node_modules/sol-css/src/theme/palettes/palette.gray.css", "utf8")
 const hueCss = fs.readFileSync("./node_modules/sol-css/src/theme/palettes/hues.css", "utf8")
 
 // Extract variables from all files

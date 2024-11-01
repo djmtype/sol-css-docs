@@ -1,5 +1,5 @@
 import { defineConfig } from 'astro/config';
-import { SITE } from "./src/config";
+// import { SITE } from "./src/config";
 import AutoImport from "astro-auto-import";
 // import { Features } from "lightningcss"
 import mdx from '@astrojs/mdx';
@@ -7,7 +7,8 @@ import mdx from '@astrojs/mdx';
 
 // https://astro.build/config
 export default defineConfig({
-  site: SITE.url,
+  // site: SITE.url,
+  site: "https://cssol.netlify.app/",
   compressHTML: true,
   integrations: [
     

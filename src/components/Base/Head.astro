@@ -1,9 +1,17 @@
 ---
-import type { CollectionEntry } from 'astro:content';
-import { SITE, OPEN_GRAPH } from '@/config';
+import { getEntry, type CollectionEntry } from 'astro:content';
+// import { SITE, OPEN_GRAPH } from '@/config';
+
+const siteConfigData = await getEntry("siteConfig", "config-site");
+
+
+const siteSettings = siteConfigData.data.settings[0]
+const siteOpenGraph = siteConfigData.data.openGraph[0]
 
 
 
+// console.dir(siteTitle, { depth: 6 });
+// type siteConfigProps = CollectionEntry<"siteConfig">["data"]
 type PagesCollectionProps = CollectionEntry<"pages">["data"]
 type DocsCollectionProps = CollectionEntry<"docs">["data"]
 type BaseHeadProps = {
@@ -14,10 +22,10 @@ type BaseHeadProps = {
 type Props = (PagesCollectionProps | DocsCollectionProps) & BaseHeadProps;
 
 const { image, title, description, canonicalUrl } = Astro.props;
-const formattedContentTitle = `${title} 🚀 ${SITE.title}`;
-const imageSrc = image?.src ?? OPEN_GRAPH.image.src;
+const formattedContentTitle = `${title} 🚀 ${siteSettings.title}`;
+const imageSrc = image?.src ?? siteOpenGraph.image.src;
 const canonicalImageSrc = new URL(imageSrc, Astro.site);
-const imageAlt = image?.alt ?? OPEN_GRAPH.image.alt;
+const imageAlt = image?.alt ?? siteOpenGraph.image.alt;
 ---
 
 <meta charset="utf-8" />
@@ -35,18 +43,18 @@ const imageAlt = image?.alt ?? OPEN_GRAPH.image.alt;
 <meta property="og:title" content={formattedContentTitle} />
 <meta property="og:type" content="article" />
 <meta property="og:url" content={canonicalUrl} />
-<meta property="og:locale" content={SITE.defaultLanguage} />
+<meta property="og:locale" content={siteSettings.defaultLanguage} />
 <meta property="og:image" content={canonicalImageSrc} />
 <meta property="og:image:alt" content={imageAlt} />
-<meta name="description" property="og:description" content={description ?? SITE.description} />
-<meta property="og:site_name" content={SITE.title} />
+<meta name="description" property="og:description" content={description ?? siteSettings.description} />
+<meta property="og:site_name" content={siteSettings.title} />
 
 <!-- Twitter Tags -->
 <meta name="twitter:card" content="summary_large_image" />
 <!-- <meta name="twitter:site" content={OPEN_GRAPH.twitter} /> -->
 <meta name="twitter:title" content={formattedContentTitle} />
-<meta name="twitter:description" content={description ?? SITE.description} />
+<meta name="twitter:description" content={description ?? siteSettings.description} />
 <meta name="twitter:image" content={canonicalImageSrc} />
 <meta name="twitter:image:alt" content={imageAlt} />
 
-<title>{`${title} / ${SITE.title}`}</title>
+<title>{`${title} / ${siteSettings.title}`}</title>
