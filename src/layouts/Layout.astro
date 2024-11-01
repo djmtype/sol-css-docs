@@ -29,7 +29,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 
 <html dir='ltr' lang='en-us'>
   <head>
-    <BaseHead title={title ? title : "SOL | CSS without the FUSS"} description={description ? description : "A drop-in classless style library"} canonicalUrl={canonicalURL} {...data} />
+    <BaseHead title={title} description={description} canonicalUrl={canonicalURL} {...data} />
   </head>
 
   <body>
