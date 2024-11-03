@@ -11,13 +11,13 @@ const description = "A classless CSS library"
 <Layout title={title} description={description}>
   <Topographic />
   <section id="section-1">
-    <header>
+
       <hgroup>
         <LogoEffect style={{ justifySelf: "center" }} />
 
         <p style={{ fontSize: "var(--font-size-1)", color: "var(--color-ink-muted)" }}><em>CSS without the FUSS</em></p>
       </hgroup>
-    </header>
+
     <div role="group"><a href="/docs" role="button">Get Started</a> <a href="/docs#usage">Using SOL</a></div>
   </section>
 </Layout>
@@ -26,28 +26,41 @@ const description = "A classless CSS library"
   :global(main) {
     flex: 1;
     display: grid;
-    place-items: center;
+    grid-template-columns: minmax(0, 1fr);
+    /* place-items: center; */
   }
 
   #section-1 {
-    inline-size: calc(100% - (var(--spacing-gutter) * 2));
+    /* width: 100%;
+    max-width: var(--breakpoint-lg);
+    margin-inline: auto; */
+   
 
     background: radial-gradient(closest-side, var(--color-surface) 25%, color-mix(in oklch, var(--color-accent), transparent 100%) 99%);
     display: grid;
     place-content: center;
     gap: var(--spacing-2xl);
     grid-template-columns: minmax(0, 1fr);
-    align-self: center;
-    margin: auto;
+    /* align-self: center; */
+    /* margin: auto; */
     text-align: center;
-    /* inline-size: min(min(var(--breakpoint-lg), 100%), calc(100% - (var(--spacing-gutter) * 2))); */
+    inline-size: min(var(--breakpoint-lg), calc(100% - (var(--spacing-gutter) * 2)));
+    margin-inline: auto;
+    /* margin-block-start: calc(-1 * var(--header-height)); */
+
+    
   }
 
-  #section-1 {
-    min-height: calc(100svh - var(--header-height, 70px));
-    position: sticky;
-    top: 0;
+  #section-1 hgroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sibling);
+  > p {
+    z-index: 2;
   }
+  }
+
+
 
   #section-2 {
     min-height: 100svh;

@@ -24,7 +24,7 @@ const { ...restProps } = Astro.props
     block-size: auto;
     inline-size: var(--_width);
     max-inline-size: 100%;
-    aspect-ratio: 518 / 160;
+    aspect-ratio: 500 / 155;
     background: var(--color-surface);
     padding: 0.25rem;
     position: relative;
@@ -89,13 +89,18 @@ const { ...restProps } = Astro.props
 
 
   .grid-stack {
-    aspect-ratio: 500 / 270;
+    aspect-ratio: 500 / 250;
+    height: auto;
+      width: 500px;
+      max-width: 100%;
     display: grid;
     grid-template-columns: minmax(0, 1fr);
+    margin-inline: auto;
 
     > * {
       grid-column: 1;
       grid-row: 1;
+      
     }
   }
 </style>
