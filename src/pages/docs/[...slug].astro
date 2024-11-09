@@ -1,8 +1,8 @@
 ---
 import "@/styles/layout/collections.css"
 import "@/styles/utilities/prose.css"
-import { slugify } from "@/utils/global"
-
+import { slugify, titleCase } from "@/utils/global"
+import FormattedDate from "@/components/Base/FormattedDate.astro"
 import SideNav from "@/components/Base/SideNav.astro";
 
 
@@ -39,9 +39,16 @@ const { Content, headings } = await render(entry)
   <article class="main-article">
     <div class="prose">
       <hgroup>
+        <p style={{ textTransform: 'uppercase', letterSpacing: '.04em', fontWeight: '600', color: 'var(--color-ink-primary)'}}>{titleCase(entry.data.category)}</p>
         <h1 id={slugify(entry.data.title)}>{entry.data.title}</h1>
+        {entry.data.dateUpdated && (
+          <p><span style={{ fontStyle: 'italic' }}>Last updated:</span> <FormattedDate date={entry.data.dateUpdated} /></p>
+        )}
       </hgroup>
+<hr />
       <Content />
     </div>
   </article>
 </Layout>
+
+

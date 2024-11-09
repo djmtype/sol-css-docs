@@ -1,6 +1,8 @@
 ---
 // import 'sol-css/src/sol.css'
 import "@/styles/main.css"
+import { ClientRouter } from 'astro:transitions';
+
 import type { MarkdownHeading } from "astro"
 import type { CollectionEntry } from "astro:content"
 
@@ -30,6 +32,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 <html dir='ltr' lang='en-us'>
   <head>
     <BaseHead title={title} description={description} canonicalUrl={canonicalURL} {...data} />
+    <ClientRouter />
   </head>
 
   <body>
@@ -48,7 +51,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 
 <script is:inline>
   // Wait for the DOM content to be fully loaded
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("astro:page-load", () => {
   // Get the header element
   const header = document.querySelector("body > header");
 

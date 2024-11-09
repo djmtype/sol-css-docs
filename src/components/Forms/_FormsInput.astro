@@ -1,11 +1,44 @@
 <form>
-  <label for="">Color Picker
-  <input type='color' value='#3950ca' />
-</label>
-
   <fieldset>
     <label>
-      First name
+      Text
+      <input name='text_field' placeholder='Enter a string' />
+    </label>
+
+    <label>
+      Email
+      <input type='email' name='email' placeholder='name@mailbox.com' autocomplete='email' />
+    </label>
+
+    <label>
+      Phone
+      <input type='tel' name='phone' placeholder='123-456-7890' autocomplete='tel' />
+    </label>
+
+    <label
+    >Number
+    <input type='number' name='number' placeholder="0" />
+  </label>
+
+
+  <label
+  >URL
+  <input type='url' name='url' placeholder="https://site.com" />
+</label>
+
+  <label>
+    Password
+    <input type="password" name="password" placeholder="0u812!Bl4h!" aria-label="Password" autocomplete="current-password" />
+  </label>
+  </fieldset>
+</form>
+
+<hr />
+
+<form>
+  <fieldset>
+    <label>
+      First Name
       <input name='first_name' placeholder='First name' autocomplete='given-name' />
     </label>
     <label>
@@ -13,7 +46,9 @@
       <input type='email' name='email' placeholder='Email' autocomplete='email' />
     </label>
   </fieldset>
-
+  <label for="">Color Picker
+    <input type='color' value='#3950ca' />
+  </label>
   <input type='submit' value='Subscribe' />
 </form>
 
@@ -75,10 +110,7 @@
     <input type='email' name='email' placeholder='Email' autocomplete='email' />
   </label>
 
-  <label
-    >Number
-    <input type='number' name='number' placeholder='Number' />
-  </label>
+  
 
   <label
     >Password

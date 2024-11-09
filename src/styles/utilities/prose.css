@@ -13,18 +13,30 @@
   --_flow: var(--spacing-xl);
 }
 
+
 .prose hgroup + * {
   margin-block-start: var(--spacing-2xl);
+}
+
+.prose hgroup {
+  container: group / inline-size;
 }
 
 .prose hgroup h1 {
   font-size: var(--font-size-5);
 }
 
-.prose hgroup p {
-  color: var(--color-ink-primary);
-  font-weight: 600;
+@container group (width > 36rem) {
+  .prose hgroup h1 {
+    font-size: var(--font-size-6);
+  }
 }
+
+:where(.prose p) {
+  max-inline-size: 65ch;
+}
+
+
 
 .prose [data-footnotes] {
   --_flow: var(--spacing-2xl);

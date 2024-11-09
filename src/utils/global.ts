@@ -10,6 +10,12 @@ export function slugify(text: string) {
     .replace(/-+$/, '');          // Remove trailing hyphen
 }
 
+export function titleCase(text: string) {
+  return text
+      .replace(/-/g, " ")             // Replace hyphens with spaces
+      .toLowerCase()                  // Convert to lowercase first
+      .replace(/\b\w/g, (char) => char.toUpperCase()); 
+}
 
 // displayFontSize
 type HeadingId = {

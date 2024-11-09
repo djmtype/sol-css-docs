@@ -100,7 +100,7 @@ const toCapitals = (str: string): string => {
   }
 
   // Attach event listeners to radio buttons and match the current --primary-hue on page load
-  document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("astro:page-load", () => {
     const hueRadios = document.querySelectorAll('input[name="hue"]')
 
     // Get the current --primary-hue value from the computed styles

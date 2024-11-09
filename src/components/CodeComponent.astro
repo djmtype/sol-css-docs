@@ -18,14 +18,17 @@ type Props = {
   lang?: BuiltinLanguage | SpecialLanguage | LanguageRegistration
   clipboardLabel?: string
   clipboardNotice?: string
+  stage?: boolean
 }
 
-const { code, file, lang = "html", theme = "css-variables", summary = "HTML", pathName, open, wrap = false, clipboardLabel = "Copy to clipboard", clipboardNotice = "Copied!", class: className, ...restProps } = Astro.props as Props
+const { code, file, lang = "html", theme = "css-variables", summary = "HTML", pathName, open, wrap = false, clipboardLabel = "Copy to clipboard", clipboardNotice = "Copied!", class: className, stage = true, ...restProps } = Astro.props as Props
 
-// const { openState, class: className, ...restProps } = Astro.props as Props
 ---
 
-<div class={className} style={{ ...restProps.style }} {...restProps}><Fragment set:html={code} /></div>
+<div class:list={[
+  stage ? 'stage' : undefined,
+  className ? className : undefined
+]} {...restProps}><Fragment set:html={code} /></div>
 
 <details open={open ? true : undefined}>
   <summary>{summary}</summary>
@@ -34,7 +37,7 @@ const { code, file, lang = "html", theme = "css-variables", summary = "HTML", pa
     <Code id={`component-${uuid}`} code={code || file || html} lang={lang} theme={theme} wrap={wrap} />
     <clipboard-copy for={`component-${uuid}`}>
       <span aria-label={clipboardLabel}>
-        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" vector-effect="non-scaling-stroke"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"></rect><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path></g></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" vector-effect="non-scaling-stroke"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"></rect><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path></g></svg>
       </span>
       <span class="notice" hidden>{clipboardNotice}</span>
     </clipboard-copy>
@@ -58,6 +61,18 @@ const { code, file, lang = "html", theme = "css-variables", summary = "HTML", pa
 </script>
 
 <style>
+  .stage {
+    border: var(--border-width-default) solid var(--color-separator);
+    /* background-color: var(--color-surface-dim); */
+    padding: var(--spacing-gutter);
+    border-radius: var(--radius-default);
+    display: grid;
+    /* place-content: center; */
+  }
+
+  .stage + details {
+--_flow: var(--spacing-sibling);
+  }
   pre {
     margin: 0;
   }

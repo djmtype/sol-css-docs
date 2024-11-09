@@ -3,21 +3,25 @@ title: "Intro"
 description: "Docs intro"
 category: getting-started
 order: 1
+dateUpdated: 2024-11-04
 ---
 
-SOL is a drop-in, classless styles utility for native HTML elements. 
-
-On some elementary level, SOL can be customized since it's built upon CSS custom properties.
+SOL is a classless style library for native HTML elements. 
 
 ## Why SOL?
 
-Honestly, I can't think of a good reason *for* or *against*. There might be better suited classless libraries out in the wild like [picoCSS](https://picocss.com), [WaterCSS](https://watercss.kognise.dev/), and [Simple.css](https://simplecss.org/). SOL is yet another option. Its footprint isn't the smallest, nor the most complete. But, if you want to try something new, then this one's for you! 
+Honestly, I can't think of a good reason *for* or *against*. There might be better suited classless libraries out in the wild like [picoCSS](https://picocss.com), [WaterCSS](https://watercss.kognise.dev/), and [Simple.css](https://simplecss.org/). SOL is yet another option. Its footprint isn't the smallest, nor the most complete. 
+
+SOL can be customized since it's built upon CSS custom properties. 
+
+*If you want to try something new, then this one's for you!*
+
 
 ## Overview
 
-SOL comes in 3 compiled flavors. They were compiled using the [Browserslist's "defaults"](https://browsersl.ist/#q=defaults) setting. 
+SOL comes in 3 compiled flavors, built using the [Browserslist's "defaults"](https://browsersl.ist/#q=defaults) setting. 
 
-For more flexibility, choose [the installation package](#install-the-package) instead.
+For more flexibility, select [the installation package](#install-the-package) instead.
 
 Choose your own adventure.
 
@@ -39,14 +43,14 @@ The usage instructions apply to the **Complete** package, but the same rules app
 
 Choose one of the options below.
 
-### Reference from a CDN 
+### Reference the CDN 
 
 Add the following syntax to your document's `<head>` 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/djmtype/sol-css@refs/heads/main/build/minified/sol.css">
 ```
 
-### Install Manually
+### Add Manually
 
 1. Download [SOL CSS](https://github.com/djmtype/sol-css/archive/refs/heads/main.zip).  
 2. Open up the `build` or `build/minified` directory.  
@@ -66,9 +70,11 @@ Install directly from Github using NPM or other package manager.
 ```zsh
 npm install github:djmtype/sol-css#main
 ```
-#### Use with LightningCSS or PostCSS[^1]
+#### Use with LightningCSS[^1] or PostCSS[^2]
 
-[^1]: PostCSS requires a few additional plugins: [`postcss-import`](https://www.npmjs.com/package/postcss-import), [`postcss-input-range`](https://www.npmjs.com/package/postcss-input-range), [`postcss-preset-env`](https://www.npmjs.com/package/postcss-preset-env).
+[^1]: As of August 2023, LightningCSS has a [transformation bug](https://github.com/parcel-bundler/lightningcss/issues/572) which may CSS properities, like `transition-behavior` and `animation-timeline`, out of order. 
+
+[^2]: PostCSS requires a few additional plugins: [`postcss-import`](https://www.npmjs.com/package/postcss-import), [`postcss-input-range`](https://www.npmjs.com/package/postcss-input-range), [`postcss-preset-env`](https://www.npmjs.com/package/postcss-preset-env).
 
 ```css
 @import "sol-css/sol.css";

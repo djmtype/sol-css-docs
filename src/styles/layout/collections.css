@@ -10,7 +10,7 @@ main:has(> aside) {
     calc(100% - (var(--spacing-gutter) * 2))
   );
 
-  @media (width > 60rem) {
+  @media (width > 48rem) {
     padding-block: var(--spacing-2xl);
     grid-template-columns: minmax(min(100%, 20ch), 0.5fr) minmax(
         min(50vw, 30ch),
@@ -20,7 +20,7 @@ main:has(> aside) {
 }
 
 main > aside {
-  @media (width > 60rem) {
+  @media (width > 48rem) {
     align-self: start;
     position: sticky;
     top: var(--spacing-gutter);

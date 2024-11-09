@@ -1,0 +1,74 @@
+---
+title: "Forms"
+description: "Styled form elements include text fields, select, range, color picker, along with other input fields."
+category: elements
+order: 4
+---
+import FormsText from "@/components/Forms/Text.astro?raw";
+import FormsVarious from "@/components/Forms/Various.astro?raw";
+import FormsTextarea from "@/components/Forms/Textarea.astro?raw";
+import FormsDate from "@/components/Forms/DateTime.astro?raw";
+import FormsSelect from "@/components/Forms/Select.astro?raw";
+import FormsCheck from "@/components/Forms/Check.astro?raw";
+import FormsRadio from "@/components/Forms/Radio.astro?raw";
+
+## Overview 
+Input fields can be wrapped within their own `<label>` or `<div>` tag. 
+
+### LABEL Wrapper
+
+```html
+<label>Name 
+  <input type="text" />
+</label>
+```
+
+### DIV Wrapper 
+
+```html
+<div>
+  <label for="name">Name </label>
+  <input id="name" type="text" />
+</div>
+```
+
+Make sure the attributes, `for` and `id`, correspond. 
+
+### Without LABEL 
+
+An `<input>` can be used without a `<label>` by supplying `aria-label` and `placeholder` attributes.
+
+```html
+<input aria-label="Name" placeholder="Your Name" type="text" />
+```
+
+---
+
+## Text Fields 
+
+<CodeComponent code={FormsText} wrap />
+
+## Textarea Field
+
+<CodeComponent code={FormsTextarea} wrap />
+
+## Select Field
+
+<CodeComponent code={FormsSelect} wrap />
+
+## Checkbox Inputs
+
+<CodeComponent code={FormsCheck} wrap />
+
+## Radio Inputs
+
+<CodeComponent code={FormsRadio} wrap />
+
+## Date/Time Fields
+
+<CodeComponent code={FormsDate} wrap />
+
+## Miscellaneous Fields 
+
+### Search, Range, File
+<CodeComponent code={FormsVarious} wrap />

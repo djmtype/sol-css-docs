@@ -1,13 +1,17 @@
 ---
 title: "Details"
 description: "A details element, sometimes referenced as an accordion"
-category: components
+category: elements
 order: 2
 ---
 import Details from "@/components/Details.astro?raw";
+import DetailsGroup from "@/components/DetailsGroup.astro?raw";
 
 **Note:** When using the `<details>` component, wrap all the following content after the `<summary>` within a `<div>`.
 
 <CodeComponent open wrap code={Details} />
 
+## Details Group 
+Open one `<details>` element at a time by providing the same `name` attribute to all `<details>`.
 
+<CodeComponent open wrap code={DetailsGroup} />

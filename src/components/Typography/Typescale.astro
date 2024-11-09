@@ -6,7 +6,6 @@ const fontSizes = ["--font-size-00", ...Array.from({ length: 7 }, (_, i) => `--f
 <div>
   {
     fontSizes.map((fontSize) => (
-
         <code>{fontSize}</code>
         <p style={{ fontSize: `var(${fontSize})` }}>{phrase}</p>
      
@@ -15,12 +14,7 @@ const fontSizes = ["--font-size-00", ...Array.from({ length: 7 }, (_, i) => `--f
 </div>
 
 <style>
-  /* ul {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-lg);
-    
-  } */
+
   div {
     display: grid;
     grid-template-columns: max-content 1fr;

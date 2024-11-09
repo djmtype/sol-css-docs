@@ -1,8 +1,12 @@
 ---
 import { getCollection, type CollectionEntry } from "astro:content"
-
-const categoryOrder = ["getting-started", "elements", "components"] as const
+import { titleCase } from "@/utils/global"
+const categoryOrder = ["getting-started", "content", "elements"] as const
 const currentPage = new URL(Astro.request.url).pathname
+
+const currentPageMatch = currentPage.endsWith('/')
+	? currentPage.slice(0, -1)
+	: currentPage;
 
 // Fetch and organize docs in a single pass
 const navData = (await getCollection("docs"))
@@ -24,14 +28,8 @@ const sortedNavData = categoryOrder.filter((category) => navData[category]?.leng
 const getItemPath = (item: CollectionEntry<"docs">) => `/${item.collection}/${item.id}`
 
 // Helper function for checking if a category should be open
-const isCategoryOpen = (items: CollectionEntry<"docs">[]) => items.some((item) => getItemPath(item) === currentPage)
+const isCategoryOpen = (items: CollectionEntry<"docs">[]) => items.some((item) => getItemPath(item) === currentPageMatch)
 
-
-const titleCase = (category: string) => 
-    category
-        .replace(/-/g, " ")             // Replace hyphens with spaces
-        .toLowerCase()                  // Convert to lowercase first
-        .replace(/\b\w/g, (char) => char.toUpperCase()); 
 ---
 
 <nav aria-label="Documentation Navigation">
@@ -45,7 +43,7 @@ const titleCase = (category: string) =>
               const path = getItemPath(item)
               return (
                 <li data-item={category}>
-                  <a href={path} aria-current={path === currentPage ? "page" : undefined}>
+                  <a href={path} aria-current={path === currentPageMatch ? "page" : undefined}>
                     {item.data.title}
                   </a>
                 </li>

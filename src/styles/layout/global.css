@@ -23,18 +23,25 @@ body > header > div {
 }
 
 body > header > div > a {
-  flex: 0 0 max-content;
-  text-align: center;
 
+  text-align: center;
+  flex: 1 0 auto;
+@media(width > 36rem) {
+  flex: 0 0 max-content;
+}
 
 }
 
 body > header nav {
-  flex: 0 1 max-content;
+  flex: 1 0 100%;
+  @media(width > 36rem) {
+    flex: 0 0 max-content;
+  }
 }
 
 body > header nav > ul {
   display: flex;
+  justify-content: center;
 }
 
 body > header nav > ul a {
@@ -61,3 +68,5 @@ footer#colophon {
   margin-block-start: auto;
   margin-block-end: 0;
 }
+
+

@@ -12,6 +12,7 @@ const docs = defineCollection({
     order: z.number().optional(),
     category: z.string().default('components'),
     draft: z.boolean().optional(),
+    dateUpdated: z.coerce.date().optional().transform((str) => (str ? new Date(str) : undefined)),
     image: z
       .object({
         src: z.string(),
@@ -30,6 +31,7 @@ const pages = defineCollection({
     description: z.string().default(SITE.description),
     order: z.number().optional(),
     draft: z.boolean().optional(),
+    dateUpdated: z.coerce.date().optional().transform((str) => (str ? new Date(str) : undefined)),
     image: z
       .object({
         src: z.string(),
