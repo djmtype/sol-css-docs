@@ -1,12 +1,8 @@
 main {
-  padding-block: var(--spacing-gutter);
   margin-inline: auto;
   inline-size: min(
     min(var(--breakpoint-md), 100%),
     calc(100% - (var(--spacing-gutter) * 2))
   );
 
-  @media (width > 48rem) {
-    padding-block: var(--spacing-2xl);
-  }
 }

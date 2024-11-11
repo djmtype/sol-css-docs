@@ -1,9 +1,9 @@
 ---
-import "@/styles/layout/collections.css"
+import "@/styles/layout/docs.css"
 import "@/styles/utilities/prose.css"
 import { slugify, titleCase } from "@/utils/global"
 import FormattedDate from "@/components/Base/FormattedDate.astro"
-import SideNav from "@/components/Base/SideNav.astro";
+import NavDocs from "@/components/Base/NavDocs.astro";
 
 
 import { type CollectionEntry, getCollection } from "astro:content"
@@ -34,7 +34,7 @@ const { Content, headings } = await render(entry)
 
 <Layout headings={headings} {...entry.data}>
   <aside id="main-aside">
-    <SideNav />
+    <NavDocs />
   </aside>
   <article class="main-article">
     <div class="prose">

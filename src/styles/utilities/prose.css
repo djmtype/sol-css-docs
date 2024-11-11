@@ -1,5 +1,5 @@
 .prose {
-  --_flow: 1.5em;
+  --_flow: 1.25em;
 }
 .prose > * + * {
   margin-block-start: var(--_flow);

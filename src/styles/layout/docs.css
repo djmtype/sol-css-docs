@@ -1,17 +1,11 @@
 main:has(> aside) {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
   gap: var(--spacing-gutter);
-  padding-block: var(--spacing-gutter);
-
   margin-inline: auto;
   inline-size: min(
     min(var(--breakpoint-lg), 100%),
     calc(100% - (var(--spacing-gutter) * 2))
   );
-
   @media (width > 48rem) {
-    padding-block: var(--spacing-2xl);
     grid-template-columns: minmax(min(100%, 20ch), 0.5fr) minmax(
         min(50vw, 30ch),
         1.25fr
@@ -25,6 +19,7 @@ main > aside {
     position: sticky;
     top: var(--spacing-gutter);
     z-index: 1;
+    
   }
 }
 
@@ -32,11 +27,13 @@ main > aside nav {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-xs);
+  
 }
 
 main > aside nav a {
   display: flex;
   padding: 0;
+  text-decoration: none;
 }
 
 main > aside nav ul {
@@ -50,15 +47,15 @@ main > aside nav ul {
 
 main > aside nav details > summary:not([role="button"]) {
   color: var(--color-ink-muted);
-  border: unset;
+  /* border: unset; */
   &:hover,
   &:focus-visible {
     color: revert;
   }
 
-  & + div {
+  /* & + div {
     border: unset;
-  }
+  } */
 }
 
 main > aside nav details[open] > summary:not([role="button"]) {

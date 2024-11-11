@@ -1,5 +1,5 @@
 ---
-title: "Forms"
+title: "Form"
 description: "Styled form elements include text fields, select, range, color picker, along with other input fields."
 category: elements
 order: 4
@@ -11,6 +11,8 @@ import FormsDate from "@/components/Forms/DateTime.astro?raw";
 import FormsSelect from "@/components/Forms/Select.astro?raw";
 import FormsCheck from "@/components/Forms/Check.astro?raw";
 import FormsRadio from "@/components/Forms/Radio.astro?raw";
+import FormsFile from "@/components/Forms/File.astro?raw";
+import FormsRange from "@/components/Forms/Range.astro?raw";
 
 ## Overview 
 Input fields can be wrapped within their own `<label>` or `<div>` tag. 
@@ -68,7 +70,10 @@ An `<input>` can be used without a `<label>` by supplying `aria-label` and `plac
 
 <CodeComponent code={FormsDate} wrap />
 
-## Miscellaneous Fields 
+## File Field
 
-### Search, Range, File
-<CodeComponent code={FormsVarious} wrap />
+<CodeComponent code={FormsFile} wrap />
+
+## Range Field
+
+<CodeComponent code={FormsRange} wrap />

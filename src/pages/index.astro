@@ -11,24 +11,20 @@ const description = "A classless CSS library"
 <Layout title={title} description={description}>
   <Topographic />
   <section id="section-1">
-
+    
       <hgroup>
         <LogoEffect style={{ justifySelf: "center" }} />
 
         <p style={{ fontSize: "var(--font-size-1)", color: "var(--color-ink-muted)" }}><em>CSS without the FUSS</em></p>
       </hgroup>
 
-    <div role="group"><a href="/docs" role="button">Get Started</a> <a href="/docs#usage">Using SOL</a></div>
+    <div role="group"><a href="/docs" role="button">Get Started</a> <a href="/docs/#usage">Using SOL</a></div>
+    
   </section>
 </Layout>
 
 <style>
-  :global(main) {
-    flex: 1;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    /* place-items: center; */
-  }
+
 
   #section-1 {
     /* width: 100%;

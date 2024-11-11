@@ -1,0 +1,45 @@
+<dialog id="dialog-form">
+  <form>
+    <header>
+      <h2>Favorite Gatchaman</h2>
+    </header>
+    <div>
+      <label>
+        Select a character
+        <select>
+          <option value="default">Choose…</option>
+          <option>Ken the Eagle</option>
+          <option>Joe the Condor</option>
+          <option>Jun the Swan</option>
+          <option>Jinpei the Swallow</option>
+          <option>Ryu the Owl</option>
+        </select>
+      </label>
+    </div>
+    <footer>
+      <button id="dialog-form-confirm" value="default">Confirm</button>
+      <button value="cancel" formmethod="dialog">Cancel</button>
+    </footer>
+  </form>
+</dialog>
+
+<button id="dialog-form-open">Open the Dialog Form</button>
+<output></output>
+
+<script is:inline>
+  const dialogForm = document.getElementById("dialog-form")
+  const dialogFormOpen = document.getElementById("dialog-form-open")
+  const outputBox = document.querySelector("output")
+  const selectEl = dialogForm.querySelector("select")
+  const dialogFormConfirm = dialogForm.querySelector("#dialog-form-confirm")
+  dialogFormOpen.addEventListener("click", () => {
+    dialogForm.showModal()
+  })
+  dialogForm.addEventListener("close", (e) => {
+    outputBox.value = dialogForm.returnValue === "default" ? "No return value." : `Return value: ${dialogForm.returnValue}`
+  })
+  dialogFormConfirm.addEventListener("click", (event) => {
+    event.preventDefault()
+    dialogForm.close(selectEl.value)
+  })
+</script>

@@ -4,7 +4,6 @@ body {
 }
 
 body > header {
-
   inline-size: 100%;
   /* backdrop-filter: blur(10px); */
 }
@@ -23,18 +22,16 @@ body > header > div {
 }
 
 body > header > div > a {
-
   text-align: center;
   flex: 1 0 auto;
-@media(width > 36rem) {
-  flex: 0 0 max-content;
-}
-
+  @media (width > 36rem) {
+    flex: 0 0 max-content;
+  }
 }
 
 body > header nav {
   flex: 1 0 100%;
-  @media(width > 36rem) {
+  @media (width > 36rem) {
     flex: 0 0 max-content;
   }
 }
@@ -49,16 +46,12 @@ body > header nav > ul a {
   display: flex;
 }
 
-
 [aria-current="page"] {
   text-decoration: none;
   color: var(--color-anchor-hover);
   cursor: default;
   font-weight: 600;
 }
-
-
-
 
 footer#colophon {
   color: var(--color-ink-muted);
@@ -69,4 +62,13 @@ footer#colophon {
   margin-block-end: 0;
 }
 
+main {
+  flex: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  padding-block: var(--spacing-gutter);
+  @media (width > 48rem) {
+    padding-block: var(--spacing-3xl);
+  }
+}
 
