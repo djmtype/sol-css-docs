@@ -1,8 +1,8 @@
-<dialog id='dialog-basic'>
+<dialog id="dialogBasic">
   <article>
     <header>
       <h2>Basic Dialog Title</h2>
-      <button id="dialog-basic-close" aria-label='Close' autofocus></button>
+      <button id="closeButton" aria-label="Close" autofocus></button>
     </header>
     <div>
       <p>Amet amet laboris tempor labore nostrud cupidatat ex aliqua non duis. Id deserunt elit reprehenderit. Ea consequat nisi in Lorem.</p>
@@ -10,16 +10,16 @@
     </div>
   </article>
 </dialog>
-<button id="dialog-basic-open">Open the Basic Dialog</button>
+<button id="showButton">Open the Basic Dialog</button>
 
 <script is:inline>
-  const dialogBasic = document.getElementById("dialog-basic")
-  const dialogBasicOpen = document.getElementById("dialog-basic-open")
-  const dialogBasicClose = document.getElementById("dialog-basic-close")
-  dialogBasicOpen.addEventListener("click", () => {
-    dialogBasic.showModal()
+  const dialog = document.getElementById("dialogBasic")
+  const showButton = document.getElementById("showButton")
+  const closeButton = document.getElementById("closeButton")
+  showButton.addEventListener("click", () => {
+    dialog.showModal()
   })
-  dialogBasicClose.addEventListener("click", () => {
-    dialogBasic.close()
+  closeButton.addEventListener("click", () => {
+    dialog.close()
   })
 </script>

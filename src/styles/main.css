@@ -6,27 +6,33 @@
 @import "./tailwind.css" layer(theme);
 @import "tailwindcss/utilities" layer(utilities); */
 
-
-
-@import '../../node_modules/sol-css/src/sol.css' layer(library);
+@import "../../node_modules/sol-css/src/sol.css" layer(library);
 
 /* @import '../../node_modules/sol-css/build/sol.css' layer(library); */
-
-
 
 /* @import '../../../src/components/button.css';
 
 @import '../../../src/components/details.css'; */
 
-@import './layout/global.css' layer(layout);
-@import './layout/code.css' layer(layout);
-@import './utilities/wrapper.css' layer(utilities);
+@import "./layout/global.css" layer(layout);
+@import "./layout/code.css" layer(layout);
+@import "./utilities/wrapper.css" layer(utilities);
 
-@import './utilities/flow.css' layer(utilities);
+@import "./utilities/flow.css" layer(utilities);
 
-@import './utilities/accessibility.css' layer(utilities);
+@import "./utilities/accessibility.css" layer(utilities);
 
-@import './settings.css' layer(settings);
+@import "./settings.css" layer(settings);
 
+* {
 
+  --shadow-spread: 20px;
+--shadow-light: oklch(15% calc(3% + var(--shadow-intensity, 2%)) var(--primary-hue) / 20%);
+--shadow-dark: oklch(15% calc(10% + var(--shadow-intensity, 2%)) var(--primary-hue) / 80%);
+}
 
+dialog {
+    box-shadow: 
+      0 calc(var(--shadow-spread) / 2) var(--shadow-spread) 0 
+      light-dark(var(--shadow-light), var(--shadow-dark));
+}

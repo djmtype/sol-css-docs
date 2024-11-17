@@ -40,13 +40,17 @@ main > aside nav ul {
   display: flex;
   flex-wrap: wrap;
   column-gap: var(--spacing-sibling);
-    > * {
-      flex: 0 1 15ch;
+  > * {
+    flex: 0 1 15ch;
+    @media (width > 48rem) {
+      flex-grow: 1;
     }
+  }
+    
 }
 
 main > aside nav details > summary:not([role="button"]) {
-  color: var(--color-ink-muted);
+  color: var(--color-ink-mute);
   /* border: unset; */
   &:hover,
   &:focus-visible {

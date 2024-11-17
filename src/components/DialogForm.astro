@@ -1,5 +1,5 @@
-<dialog id="dialog-form">
-  <form>
+<dialog id="dialogForm">
+  <form method="dialog">
     <header>
       <h2>Favorite Gatchaman</h2>
     </header>
@@ -17,21 +17,21 @@
       </label>
     </div>
     <footer>
-      <button id="dialog-form-confirm" value="default">Confirm</button>
+      <button id="dialogFormConfirm" value="default">Confirm</button>
       <button value="cancel" formmethod="dialog">Cancel</button>
     </footer>
   </form>
 </dialog>
 
-<button id="dialog-form-open">Open the Dialog Form</button>
+<button id="dialogFormOpen">Open the Dialog Form</button>
 <output></output>
 
 <script is:inline>
-  const dialogForm = document.getElementById("dialog-form")
-  const dialogFormOpen = document.getElementById("dialog-form-open")
+  const dialogForm = document.getElementById("dialogForm")
+  const dialogFormOpen = document.getElementById("dialogFormOpen")
   const outputBox = document.querySelector("output")
   const selectEl = dialogForm.querySelector("select")
-  const dialogFormConfirm = dialogForm.querySelector("#dialog-form-confirm")
+  const dialogFormConfirm = dialogForm.querySelector("#dialogFormConfirm")
   dialogFormOpen.addEventListener("click", () => {
     dialogForm.showModal()
   })
