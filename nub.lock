@@ -34,7 +34,7 @@ importers:
         version: 4.28.8
       sol-css:
         specifier: github:djmtype/sol-css#main
-        version: https://codeload.github.com/djmtype/sol-css/tar.gz/ed0e948822c353a037d7605e04e13d90988f5c74
+        version: https://codeload.github.com/djmtype/sol-css/tar.gz/44d914f70136b74a4a496d824c934ce783480a2b
       typescript:
         specifier: ^6.0.0-beta
         version: 6.0.3
@@ -1822,9 +1822,9 @@ packages:
     resolution: {integrity: sha512-PPlsspAZ4jbMBu5DMFhfUGDQLu/vrL4SyBROVS37x8ynnVmFIs1VPBz1Co8Xks3TvpIaZXmU85y4DrQ+UyVFoQ==}
     engines: {node: '>= 18'}
 
-  sol-css@https://codeload.github.com/djmtype/sol-css/tar.gz/ed0e948822c353a037d7605e04e13d90988f5c74:
-    resolution: {gitHosted: true, integrity: sha512-O5jTD/1TCsrhc/44uY2FQaSlkrBVjzh5EteMOkote+NXtgMoFv1/a3Joe6S/kpCtYq0q3lFzKKKQ1EiKJ9THeA==, tarball: https://codeload.github.com/djmtype/sol-css/tar.gz/ed0e948822c353a037d7605e04e13d90988f5c74}
-    version: 0.6.5
+  sol-css@https://codeload.github.com/djmtype/sol-css/tar.gz/44d914f70136b74a4a496d824c934ce783480a2b:
+    resolution: {gitHosted: true, integrity: sha512-8kiuLcfWI6NSrkLdviGfJcIOxrECdWaDykI6/mcmZ5F+g1OIDCKgFl/sGTj45iwPvXJd/+si/K22UOD84HMTOQ==, tarball: https://codeload.github.com/djmtype/sol-css/tar.gz/44d914f70136b74a4a496d824c934ce783480a2b}
+    version: 0.6.6
 
   source-map-js@1.2.1:
     resolution: {integrity: sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==}
@@ -4372,7 +4372,7 @@ snapshots:
 
   smol-toml@1.7.1: {}
 
-  sol-css@https://codeload.github.com/djmtype/sol-css/tar.gz/ed0e948822c353a037d7605e04e13d90988f5c74:
+  sol-css@https://codeload.github.com/djmtype/sol-css/tar.gz/44d914f70136b74a4a496d824c934ce783480a2b:
     dependencies:
       baseline-browser-mapping: 2.11.13
       browserslist: 4.28.8
