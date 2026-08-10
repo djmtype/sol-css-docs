@@ -13,6 +13,7 @@
 <button id="showButton">Open the Basic Dialog</button>
 
 <script is:inline>
+  document.addEventListener("astro:page-load", () => {
   const dialog = document.getElementById("dialogBasic")
   const showButton = document.getElementById("showButton")
   const closeButton = document.getElementById("closeButton")
@@ -22,4 +23,5 @@
   closeButton.addEventListener("click", () => {
     dialog.close()
   })
+})
 </script>

@@ -30,13 +30,37 @@ const entry = Astro.props
 
 
 const { Content, headings } = await render(entry)
+
+
+
+const slideAnima = {
+  old: {
+    name: 'slideOut',
+    duration: '.3s',
+    easing: 'ease',
+    fillMode: 'both',
+  },
+  new: {
+    name: 'slideIn',
+    duration: '.3s',
+    delay: '0.15s',
+    easing: 'ease',
+    fillMode: 'both',
+  },
+}
+const verticalSlide = {
+  forwards: slideAnima,
+  backwards: slideAnima,
+}
+
+
 ---
 
 <Layout headings={headings} {...entry.data}>
   <aside id="main-aside">
     <NavDocs />
   </aside>
-  <article class="main-article">
+  <article class="main-article" transition:animate={verticalSlide}>
     <div class="prose">
       <hgroup>
         <p style={{ textTransform: 'uppercase', letterSpacing: '.04em', fontWeight: '600', color: 'var(--color-ink-primary)'}}>{titleCase(entry.data.category)}</p>
@@ -51,4 +75,27 @@ const { Content, headings } = await render(entry)
   </article>
 </Layout>
 
+<style is:global>
 
+
+@keyframes slideIn {
+  from {
+    translate: 25% 0%;
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+    translate: 0% 0%;
+  }
+}
+@keyframes slideOut {
+  from {
+    translate: 0% 0%;
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    translate: 25% 0%;
+  }
+}
+</style>

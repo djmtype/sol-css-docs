@@ -1,12 +1,12 @@
 ---
 import { getEntry, type CollectionEntry } from 'astro:content';
-// import { SITE, OPEN_GRAPH } from '@/config';
+import { SITE, OPEN_GRAPH } from '@/config';
 
 const siteConfigData = await getEntry("siteConfig", "config-site");
 
 
-const siteSettings = siteConfigData.data.settings[0]
-const siteOpenGraph = siteConfigData.data.openGraph[0]
+const siteSettings = siteConfigData?.data.settings[0] ?? SITE;
+const siteOpenGraph = siteConfigData?.data.openGraph[0] ?? OPEN_GRAPH;
 
 
 

@@ -9,7 +9,11 @@ const { currentPage } = Astro.props;
 
 const navPrimaryData = await getEntry("navPrimary", "primary-navigation");
 
-const navPrimary = navPrimaryData.data
+const navPrimary = navPrimaryData?.data ?? {
+  id: "primary-navigation",
+  name: "Primary Navigation",
+  links: [],
+};
 
 ---
 

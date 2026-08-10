@@ -1,11 +1,13 @@
-import { glob, file } from "astro/loaders";
-import { z, defineCollection } from "astro:content";
+import { defineCollection } from 'astro:content';
+import { z } from 'astro/zod';
+import { glob, file } from 'astro/loaders';
 
 import { SITE } from "@/config";
 
 const docs = defineCollection({
   // type: 'content',
-  loader: glob({ pattern: "**/*.{md,mdx}", base: "src/content/docs" }),
+  //
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/docs" }),
   schema: z.object({
     title: z.string().default(SITE.title),
     description: z.string().default(SITE.description),
@@ -25,7 +27,7 @@ const docs = defineCollection({
 
 const pages = defineCollection({
   // type: 'content',
-  loader: glob({ pattern: "**/*.{md,mdx}", base: "src/content/pages" }),
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/pages" }),
   schema: z.object({
     title: z.string().default(SITE.title),
     description: z.string().default(SITE.description),
@@ -42,7 +44,7 @@ const pages = defineCollection({
 });
 
 const navPrimary = defineCollection({
-  loader: file("src/data/navPrimary.json"),
+  loader: file("./src/data/navPrimary.json"),
   schema: z.object({
     id: z.string(),
     name: z.string(),
@@ -57,7 +59,7 @@ const navPrimary = defineCollection({
 });
 
 const siteConfig = defineCollection({
-  loader: file("src/data/config.json"),
+  loader: file("./src/data/config.json"),
   schema: z.object({
     id: z.string(),
     name: z.string(),

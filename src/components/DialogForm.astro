@@ -6,7 +6,7 @@
     <div>
       <label>
         Select a character
-        <select>
+        <select name="options">
           <option value="default">Choose…</option>
           <option>Ken the Eagle</option>
           <option>Joe the Condor</option>
@@ -27,6 +27,7 @@
 <output></output>
 
 <script is:inline>
+  document.addEventListener("astro:page-load", () => {
   const dialogForm = document.getElementById("dialogForm")
   const dialogFormOpen = document.getElementById("dialogFormOpen")
   const outputBox = document.querySelector("output")
@@ -35,11 +36,12 @@
   dialogFormOpen.addEventListener("click", () => {
     dialogForm.showModal()
   })
-  dialogForm.addEventListener("close", (e) => {
+  dialogForm.addEventListener("close", () => {
     outputBox.value = dialogForm.returnValue === "default" ? "No return value." : `Return value: ${dialogForm.returnValue}`
   })
   dialogFormConfirm.addEventListener("click", (event) => {
     event.preventDefault()
     dialogForm.close(selectEl.value)
   })
+})
 </script>

@@ -4,10 +4,8 @@
   "compilerOptions": {
 		"strictNullChecks": true,
     "allowJs": true,
-		"baseUrl": ".",
 		"paths": {
-			"~/*": ["public/*"],
-			"@/*": ["src/*"]
+			"@/*": ["./src/*"]
 		}
 	},
 	"exclude": [

@@ -29,13 +29,16 @@ const { title, description, headings, ...data } = Astro.props
 const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 ---
 
-<html dir='ltr' lang='en-us'>
+
+  <html dir='ltr' lang='en-us'>
+
+
   <head>
     <BaseHead title={title} description={description} canonicalUrl={canonicalURL} {...data} />
     <ClientRouter />
   </head>
 
-  <body>
+  <body transition:animate="none">
     <SkipLink />
     <!-- <button id="themeToggle">Toggle</button> -->
     <BaseHeader currentPage={currentPage} />
@@ -43,11 +46,13 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site)
     <main id='main-content'>
       <slot />
     </main>
-    <footer id="colophon">
+    <footer id="colophon" style="position: relative; z-index: 1;">
       <p style="font-size: var(--font-size-00)">&copy; 2024 SOL system. <a href="/license" target="_blank" rel="noopener">MIT License</a>.</p>
     </footer>
   </body>
 </html>
+
+
 
 <script is:inline>
   // Wait for the DOM content to be fully loaded

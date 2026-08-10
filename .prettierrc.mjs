@@ -1,5 +1,5 @@
-module.exports = {
-  plugins: [require.resolve("prettier-plugin-astro")],
+export default {
+  plugins: [import.meta.resolve("prettier-plugin-astro")],
   overrides: [
     {
       files: "*.md",
