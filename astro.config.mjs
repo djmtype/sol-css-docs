@@ -1,27 +1,25 @@
 import { defineConfig } from "astro/config";
-
-
+import { unified } from "@astrojs/markdown-remark";
+// import { satteri } from '@astrojs/markdown-satteri';
+import mdx from "@astrojs/mdx";
 // import { SITE } from "./src/config";
-import AutoImport from "astro-auto-import";
+
 import browserslist from "browserslist";
 import { browserslistToTargets, Features } from "lightningcss";
-
-import mdx from "@astrojs/mdx";
 
 // import tailwindcss from '@tailwindcss/vite'
 
 // https://astro.build/config
 export default defineConfig({
   // site: SITE.url,
-  site: "https://cssol.netlify.app/",
+  site: "https://cssol.netlify.app",
   compressHTML: true,
-  integrations: [AutoImport({
-    imports: ["./src/components/CodeComponent.astro"],
-  }), mdx()],
+  integrations: [mdx()],
 
-  //
-
-
+  markdown: {
+    processor: unified(),
+    // processor: satteri(),
+  },
 
   vite: {
     // plugins: [tailwindcss()],
@@ -32,9 +30,12 @@ export default defineConfig({
         targets: browserslistToTargets(
           browserslist("baseline widely available"),
         ),
-        include: Features.Nesting,
         // exclude: Features.LabColors | Features.P3Colors,
-        exclude: Features.OklabColors | Features.ColorFunction,
+        // exclude: Features.Nesting | Features.OklabColors | Features.ColorFunction,
+        exclude:
+          Features.VendorPrefixes |
+          Features.MediaRangeSyntax |
+          Features.Selectors,
         // minify: false,
         // sourceMap: true,
       },

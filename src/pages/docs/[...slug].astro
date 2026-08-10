@@ -4,7 +4,7 @@ import "@/styles/utilities/prose.css"
 import { slugify, titleCase } from "@/utils/global"
 import FormattedDate from "@/components/Base/FormattedDate.astro"
 import NavDocs from "@/components/Base/NavDocs.astro";
-
+import CodeComponent from "@/components/CodeComponent.astro"
 
 import { type CollectionEntry, getCollection } from "astro:content"
 import { render } from "astro:content";
@@ -70,7 +70,7 @@ const verticalSlide = {
         )}
       </hgroup>
 <hr />
-      <Content />
+      <Content components={{ CodeComponent }} />
     </div>
   </article>
 </Layout>

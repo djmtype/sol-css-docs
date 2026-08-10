@@ -1,69 +1,59 @@
 ---
-import hueCss from "sol-css/src/theme/palettes/hues.css?raw";
+import fs from "fs"
 
-interface Swatch {
-  readonly name: string;
-  readonly value: string;
+// Define types
+type Swatch = {
+  name: string
+  value: string
 }
 
-type SwatchCategories = Record<string, Swatch[]>;
+type SwatchCategories = {
+  [category: string]: Swatch[]
+}
 
-/**
- * Parses CSS variable declarations safely using regex capturing groups.
- */
-function extractCssVariables(cssStyles: string): SwatchCategories {
-  // Capture contents within :root, *, or @theme blocks
-  const styleBlockMatch = cssStyles.match(/(?::root|\*|@theme)\s*\{([^}]*)\}/s);
+// Function to extract CSS variables from a CSS string
+const extractCssVariables = (cssStyles: string) => {
+  const styleBlockMatch = cssStyles.match(/(:root|\*)\s*{([^}]*)}/s)
 
-  if (!styleBlockMatch?.[1]) {
-    console.warn("No style block found in the CSS content.");
-    return {};
+  if (!styleBlockMatch) {
+    console.log("No style block found in the CSS file.")
+    process.exit(1)
   }
 
-  const styleBlockContents = styleBlockMatch[1];
+  const styleBlockContents = styleBlockMatch[2] // Adjusted to get the block content
+  const matches = styleBlockContents.match(/--([^:]+):([^;]+)/g)
 
-  // Captures: Group 1 = variable name, Group 2 = value (handles colons inside value)
-  const variableRegex = /--([a-zA-Z0-9_-]+)\s*:\s*([^;]+);/g;
-  const categories: SwatchCategories = {};
+  if (!matches) {
+    console.log("No matches found in the style block contents.")
+    process.exit(1)
+  }
 
-  let match: RegExpExecArray | null;
-  while ((match = variableRegex.exec(styleBlockContents)) !== null) {
-    const rawName = match[1]?.trim();
-    const rawValue = match[2]?.trim();
+  // Create an object to store the swatches
+  return matches.reduce<SwatchCategories>((acc, match) => {
+    const [variable, value] = match.split(":")
+    const name = variable.slice(2).trim() // Remove the leading "--" and trim any whitespace
+    const category = name.split("-")[1] // Extract the category name
 
-    if (!rawName || !rawValue) continue;
-
-    // Type-safe category extraction with fallback
-    const nameSegments = rawName.split("-");
-    const category = nameSegments.length > 1 && nameSegments[1]
-      ? nameSegments[1]
-      : "general";
-
-    if (!categories[category]) {
-      categories[category] = [];
+    if (!acc[category]) {
+      acc[category] = []
     }
 
-    categories[category].push({
-      name: rawName,
-      value: rawValue,
-    });
-  }
-
-  return categories;
+    acc[category].push({ name, value: value.trim() }) // Preserve the spaces within the value
+    return acc
+  }, {})
 }
 
-// Read raw CSS directly via Vite import (bypassing fs)
-const hueSwatches = extractCssVariables(hueCss);
+// Read the CSS files
+const hueCss = fs.readFileSync("./node_modules/sol-css/src/theme/palettes/hues.css", "utf8")
 
-/**
- * Capitalizes the first letter of each word in a string.
- */
-function toCapitals(str: string): string {
-  return str
-    .split(" ")
-    .filter(Boolean)
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(" ");
+// Extract variables from all files
+const hueSwatches = extractCssVariables(hueCss)
+
+// Helper function to capitalize words
+const toCapitals = (str: string): string => {
+  const words = str.split(" ")
+  const capitalizedWords = words.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+  return capitalizedWords.join(" ")
 }
 ---
 

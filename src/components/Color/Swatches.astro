@@ -1,68 +1,72 @@
 ---
-import fs from "fs"
+// Import CSS raw text using Vite's ?raw import parameter (no `fs` required)
+import primaryCss from "sol-css/src/theme/palettes/palette.primary.css?raw";
+import secondaryCss from "sol-css/src/theme/palettes/palette.secondary.css?raw";
+import grayCss from "sol-css/src/theme/palettes/palette.gray.css?raw";
 
-// Define types
-type Swatch = {
-  name: string
-  value: string
+interface Swatch {
+  name: string;
+  value: string;
 }
 
-type SwatchCategories = {
-  [category: string]: Swatch[]
-}
+type SwatchCategories = Record<string, Swatch[]>;
 
-// Function to extract CSS variables from a CSS string
-const extractCssVariables = (cssStyles: string) => {
-  const styleBlockMatch = cssStyles.match(/(:root|\*)\s*{([^}]*)}/s)
+/**
+ * Extracts CSS custom properties from CSS stylesheet text.
+ */
+function extractCssVariables(cssStyles: string): SwatchCategories {
+  // Capture blocks targeting :root, *, or similar standard selectors
+  const styleBlockMatch = cssStyles.match(/(?::root|\*)\s*\{([^}]*)\}/s);
 
   if (!styleBlockMatch) {
-    console.log("No style block found in the CSS file.")
-    process.exit(1)
+    console.warn("No valid CSS variables root block found.");
+    return {};
   }
 
-  const styleBlockContents = styleBlockMatch[2] // Adjusted to get the block content
-  const matches = styleBlockContents.match(/--([^:]+):([^;]+)/g)
+  const styleBlockContents = styleBlockMatch[1];
+  // Match CSS variable declaration line-by-line or by variable pattern
+  const variableRegex = /--([^:\s]+)\s*:\s*([^;]+);/g;
+  const categories: SwatchCategories = {};
 
-  if (!matches) {
-    console.log("No matches found in the style block contents.")
-    process.exit(1)
-  }
+  let match: RegExpExecArray | null;
+  while ((match = variableRegex.exec(styleBlockContents)) !== null) {
+    const name = match[1].trim(); // e.g. "color-primary-500"
+    const value = match[2].trim(); // e.g. "hsl(210, 50%, 50%)"
 
-  // Create an object to store the swatches
-  return matches.reduce<SwatchCategories>((acc, match) => {
-    const [variable, value] = match.split(":")
-    const name = variable.slice(2).trim() // Remove the leading "--" and trim any whitespace
-    const category = name.split("-")[1] // Extract the category name
+    // Fallback to "uncategorized" if the variable name lacks a standard category prefix
+    const nameParts = name.split("-");
+    const category = nameParts.length > 1 ? nameParts[1] : "uncategorized";
 
-    if (!acc[category]) {
-      acc[category] = []
+    if (!categories[category]) {
+      categories[category] = [];
     }
 
-    acc[category].push({ name, value: value.trim() }) // Preserve the spaces within the value
-    return acc
-  }, {})
+    categories[category].push({ name, value });
+  }
+
+  return categories;
 }
 
-// Read the CSS files
-const primaryCss = fs.readFileSync("./node_modules/sol-css/src/theme/palettes/palette.primary.css", "utf8")
-const secondaryCss = fs.readFileSync("./node_modules/sol-css/src/theme/palettes/palette.secondary.css", "utf8")
-const grayCss = fs.readFileSync("./node_modules/sol-css/src/theme/palettes/palette.gray.css", "utf8")
-// const hueCss = fs.readFileSync("./node_modules/sol-css/src/theme/palettes/hues.css", "utf8")
+// Extract variables from raw CSS string contents
+const primarySwatches = extractCssVariables(primaryCss);
+const secondarySwatches = extractCssVariables(secondaryCss);
+const graySwatches = extractCssVariables(grayCss);
 
-// Extract variables from all files
-const primarySwatches = extractCssVariables(primaryCss)
-const secondarySwatches = extractCssVariables(secondaryCss)
-const graySwatches = extractCssVariables(grayCss)
-// const hueSwatches = extractCssVariables(hueCss)
+// Merge swatches safely
+const swatches: SwatchCategories = {
+  ...primarySwatches,
+  ...secondarySwatches,
+  ...graySwatches,
+};
 
-// Merge swatches from primary and gray palette
-const swatches = { ...primarySwatches, ...secondarySwatches, ...graySwatches }
-
-// Helper function to capitalize words
-const toCapitals = (str: string): string => {
-  const words = str.split(" ")
-  const capitalizedWords = words.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-  return capitalizedWords.join(" ")
+/**
+ * Helper function to capitalize title words
+ */
+function toCapitals(str: string): string {
+  return str
+    .split(" ")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
 }
 ---
 

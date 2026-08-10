@@ -14,7 +14,7 @@ const docs = defineCollection({
     order: z.number().optional(),
     category: z.string().default('components'),
     draft: z.boolean().optional(),
-    dateUpdated: z.coerce.date().optional().transform((str) => (str ? new Date(str) : undefined)),
+    dateUpdated: z.coerce.date().transform((str) => (str ? new Date(str) : undefined)).optional(),
     image: z
       .object({
         src: z.string(),
@@ -33,7 +33,7 @@ const pages = defineCollection({
     description: z.string().default(SITE.description),
     order: z.number().optional(),
     draft: z.boolean().optional(),
-    dateUpdated: z.coerce.date().optional().transform((str) => (str ? new Date(str) : undefined)),
+    dateUpdated: z.coerce.date().transform((str) => (str ? new Date(str) : undefined)).optional(),
     image: z
       .object({
         src: z.string(),
@@ -68,14 +68,14 @@ const siteConfig = defineCollection({
         title: z.string(),
         description: z.string(),
         defaultLanguage: z.string(),
-        url: z.string().url(),
+        url: z.string(),
         analyticsId: z.string().optional(),
       })
     ),
     openGraph: z.array(
       z.object({
         image: z.object({
-          src: z.string().url(),
+          src: z.string(),
           alt: z.string(),
         }),
       })
@@ -84,24 +84,6 @@ const siteConfig = defineCollection({
 });
 
 
-
-// const blog = defineCollection({
-
-//   schema: z.object({
-// 		permalink: z.string().optional(),
-//     title: z.string().max(100),
-// 		subtitle: z.string().max(100).optional(),
-// 		description: z.string(),
-//     date: z.coerce.date().transform((str) => new Date(str)),
-//     image: z.object({
-//       src: z.string(),
-//       alt: z.string(),
-// 			width: z.number().optional(),
-// 			height: z.number().optional(),
-//     }).optional(),
-//     status: z.string()
-//   })
-// });
 
 export const collections = {
   siteConfig,

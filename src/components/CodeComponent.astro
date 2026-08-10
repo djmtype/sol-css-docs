@@ -1,5 +1,5 @@
 ---
-import type { BuiltinLanguage, LanguageRegistration, SpecialLanguage, ThemeRegistration, ThemeRegistrationRaw } from "shiki"
+import type { LanguageRegistration, SpecialLanguage, ThemeRegistration, ThemeRegistrationRaw } from "@shikijs/types"
 import { v4 as uuidv4 } from "uuid"
 import { Code } from "astro/components"
 const html = await Astro.slots.render("default")
@@ -15,7 +15,7 @@ type Props = {
   wrap?: boolean | null
   summary?: string
   pathName?: string
-  lang?: BuiltinLanguage | SpecialLanguage | LanguageRegistration
+  lang?: SpecialLanguage | LanguageRegistration
   clipboardLabel?: string
   clipboardNotice?: string
   stage?: boolean
